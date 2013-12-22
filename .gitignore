@@ -6,6 +6,7 @@ bin-release-temp/
 
 # Other files and folders
 .settings/
+.metadata/
 
 ~*
 *~
