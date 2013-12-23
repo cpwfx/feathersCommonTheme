@@ -3,7 +3,6 @@
 	<name>commonTheme</name>
 	<comment></comment>
 	<projects>
-		<project>feathers1.2.0</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -15,4 +14,11 @@
 	<natures>
 		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>[source path] src</name>
+			<type>2</type>
+			<locationURI>DOCUMENTS/feathers1.2.0/src</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
