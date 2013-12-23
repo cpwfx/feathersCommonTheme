@@ -3,6 +3,7 @@
 	<name>commonTheme</name>
 	<comment></comment>
 	<projects>
+		<project>feathers1.2.0</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
