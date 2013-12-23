@@ -37,7 +37,7 @@ package
 			var btn:Button = new Button();
 			btn.x = 64;
 			btn.y = 64;
-			btn.label = "TEST";
+			btn.label = "こんにちはWORLD";
 			addChild(btn);
 			
 		}

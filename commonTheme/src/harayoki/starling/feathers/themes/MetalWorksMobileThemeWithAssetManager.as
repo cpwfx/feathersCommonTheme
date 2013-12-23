@@ -112,7 +112,7 @@ package harayoki.starling.feathers.themes
 		[Embed(source="fonts/SourceSansPro-Semibold.ttf",fontFamily="SourceSansPro",fontWeight="bold",unicodeRange="U+0030-U+0039",mimeType="application/x-font",embedAsCFF="false")]
 		protected static const SOURCE_SANS_PRO_SEMIBOLD_NUMBERS:Class;*/
 
-		protected static const FONT_NAME:String = "_sans";//"SourceSansPro";
+		protected static const FONT_NAME:String = "_ゴシック";
 
 		protected static const PRIMARY_BACKGROUND_COLOR:uint = 0x4a4137;
 		protected static const LIGHT_TEXT_COLOR:uint = 0xe5e5e5;
@@ -146,8 +146,6 @@ package harayoki.starling.feathers.themes
 		protected static const SCROLL_BAR_THUMB_REGION1:int = 5;
 		protected static const SCROLL_BAR_THUMB_REGION2:int = 14;
 
-		protected static const ATLAS_NAME:String = "metalworks";
-
 		public static const COMPONENT_NAME_PICKER_LIST_ITEM_RENDERER:String = "metal-works-mobile-picker-list-item-renderer";
 		public static const COMPONENT_NAME_ALERT_BUTTON_GROUP_BUTTON:String = "metal-works-mobile-alert-button-group-button";
 
@@ -173,6 +171,10 @@ package harayoki.starling.feathers.themes
 			return quad;
 		}
 
+		/* costom */
+		protected var _themeConfig:CommonThemeConfig;
+		/**/
+		
 		public function MetalWorksMobileThemeWithAssetManager(assets:Object = null, assetManager:AssetManager = null, container:DisplayObjectContainer = null, scaleToDPI:Boolean = true)
 		{
 			if(!container)
@@ -181,6 +183,7 @@ package harayoki.starling.feathers.themes
 			}
 			super(container);
 			this._scaleToDPI = scaleToDPI;
+			this._themeConfig = new CommonThemeConfig();
 			this.processSource(assets, assetManager);
 		}
 
@@ -197,25 +200,7 @@ package harayoki.starling.feathers.themes
 		{
 			return this._scaleToDPI;
 		}
-
-		/**
-		 * A subclass may embed the theme's assets and override this setter to
-		 * return the class that creates the bitmap used for the texture atlas.
-		 */
-		protected function get atlasImageClass():Class
-		{
-			return null;
-		}
-
-		/**
-		 * A subclass may embed the theme's assets and override this setter to
-		 * return the class that creates the XML used for the texture atlas.
-		 */
-		protected function get atlasXMLClass():Class
-		{
-			return null;
-		}
-
+		
 		protected var assetManager:AssetManager;
 
 		protected var scale:Number = 1;
@@ -323,7 +308,8 @@ package harayoki.starling.feathers.themes
 			}
 			if(this.assetManager)
 			{
-				this.assetManager.removeTextureAtlas(ATLAS_NAME);
+				
+				this.assetManager.removeTextureAtlas(this._themeConfig.atlasname);
 			}
 			super.dispose();
 		}
@@ -339,17 +325,8 @@ package harayoki.starling.feathers.themes
 			Starling.current.nativeStage.color = PRIMARY_BACKGROUND_COLOR;
 		}
 
-		protected function atlasTexture_onRestore():void
-		{
-			var AtlasImageClass:Class = this.atlasImageClass;
-			var atlasBitmapData:BitmapData = Bitmap(new AtlasImageClass()).bitmapData;
-			this.atlasTexture.root.uploadBitmapData(atlasBitmapData);
-			atlasBitmapData.dispose();
-		}
-
 		protected function assetManager_onProgress(progress:Number):void
 		{
-			trace("assetManager_onProgress",progress);
 			if(progress < 1)
 			{
 				return;
@@ -375,13 +352,15 @@ package harayoki.starling.feathers.themes
 					{
 						assets = assetsDirectoryName + "/";
 					}
-					this.assetManager.enqueue(assets + "images/metalworks.xml");
-					this.assetManager.enqueue(assets + "images/metalworks.png");
+					this.assetManager.enqueue(assets + "sampleTheme/metalworks.xml");
+					this.assetManager.enqueue(assets + "sampleTheme/metalworks.png");
+					this.assetManager.enqueue(assets + "sampleTheme/metalworks_config.json");
 				}
 				else if(getQualifiedClassName(assets) == "flash.filesystem::File" && assets["isDirectory"])
 				{
-					this.assetManager.enqueue(assets["resolvePath"]("images/metalworks.xml"));
-					this.assetManager.enqueue(assets["resolvePath"]("images/metalworks.png"));
+					this.assetManager.enqueue(assets["resolvePath"]("sampleTheme/metalworks.xml"));
+					this.assetManager.enqueue(assets["resolvePath"]("sampleTheme/metalworks.png"));
+					this.assetManager.enqueue(assets["resolvePath"]("sampleTheme/metalworks_config.json"));
 				}
 				else
 				{
@@ -391,32 +370,20 @@ package harayoki.starling.feathers.themes
 			}
 			else
 			{
-				var AtlasImageClass:Class = this.atlasImageClass;
-				var AtlasXMLType:Class = this.atlasXMLClass;
-				if(AtlasImageClass && AtlasXMLType)
-				{
-					var atlasBitmapData:BitmapData = Bitmap(new AtlasImageClass()).bitmapData;
-					this.atlasTexture = Texture.fromBitmapData(atlasBitmapData, false);
-					this.atlasTexture.root.onRestore = this.atlasTexture_onRestore;
-					atlasBitmapData.dispose();
-					this.atlas = new TextureAtlas(atlasTexture, XML(new AtlasXMLType()));
-					this.initialize();
-					this.dispatchEventWith(Event.COMPLETE);
-				}
-				else
-				{
-					throw new Error("Asset path or embedded assets not found. Theme not loaded.")
-				}
+				throw new Error("Asset path not found. Theme not loaded.")
 			}
 		}
 
 		protected function initialize():void
 		{
+			this.initializeConfig();
+				
 			if(!this.atlas)
 			{
 				if(this.assetManager)
 				{
-					this.atlas = this.assetManager.getTextureAtlas(ATLAS_NAME);
+					trace("this._themeConfig.atlasname",this._themeConfig.atlasname);
+					this.atlas = this.assetManager.getTextureAtlas(this._themeConfig.atlasname);
 				}
 				else
 				{
@@ -439,6 +406,11 @@ package harayoki.starling.feathers.themes
 			}
 
 			this.setInitializers();
+		}
+		
+		protected function initializeConfig():void
+		{
+			this._themeConfig.applyJsonData(this.assetManager.getObject("metalworks_config"));
 		}
 
 		protected function initializeGlobals():void
