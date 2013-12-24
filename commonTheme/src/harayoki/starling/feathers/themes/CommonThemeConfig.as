@@ -1,25 +1,11 @@
 package harayoki.starling.feathers.themes
 {
-	import flash.utils.describeType;
+	import flash.geom.Rectangle;
 
-	public class CommonThemeConfig
+	public class CommonThemeConfig extends ThemeConfig
 	{
-		public static var verbose:Boolean = true;
-		
-		private static var _variablesAndTypes:Object;
-		private static function _analyzeVariables(instance:Object):void
-		{
-			if(!_variablesAndTypes)
-			{
-				_variablesAndTypes = {};
-				var xl:XMLList = describeType(instance).variable;
-				for each(var x:XML in xl) {
-					_variablesAndTypes[x.@name] = x.@type;
-				}
-			}			
-		}
-		
 		//public var の名前は jsonのパラメータと同じです
+		
 		public var fontName:String = "_sans";
 		public var atlasName:String = "";
 		public var backgroundColor:uint = 0x4a4137;
@@ -37,76 +23,27 @@ package harayoki.starling.feathers.themes
 		public var modalOverlayColor:uint = 0x29241e;
 		public var modalOverlayAlpha:Number = 0.8;
 
+		public var defaultScale9Grid:Rectangle = new Rectangle(5, 5, 22, 22);
+		public var buttonScale9Grid:Rectangle = new Rectangle(5, 5, 50, 50);
+		public var buttonSelectedScale9Grid:Rectangle = new Rectangle(8, 8, 44, 44);
+		public var backButtonScale3Region1:Number = 24;
+		public var backButtonScale3Region2:Number = 6;
+		public var forwardButtonScale3Region1:Number = 6;
+		public var forwardButtonScale3Region3:Number = 6;
+		public var itemRendererScale8Grid:Rectangle = new Rectangle(13, 0, 2, 82);
+		public var insetItemRendererFirstScale9Grid:Rectangle = new Rectangle(13, 13, 3, 70);
+		public var insetItemRendererLastScale9Grid:Rectangle = new Rectangle(13, 0, 3, 75);
+		public var insetItemRendererSingleScale9Grid:Rectangle = new Rectangle(13, 13, 3, 62);
+		public var tabScale9Grid:Rectangle = new Rectangle(19, 19, 50, 50);
+		public var scrollBarThumbRegion1:int = 5;
+		public var scrollBarThumbRegion2:int = 14;
+		
 		public function CommonThemeConfig()
 		{
-			_analyzeVariables(this);
+			_analyzeVariables(CommonThemeConfig);
 		}
 		
-		public function applyJsonData(jsonObject:Object):void
-		{
-			var o:Object = jsonObject || {};
-			var key:String, type:String, temp:String;
-			var value:Object;
-			for (key in _variablesAndTypes)
-			{
-				type = _variablesAndTypes[key];
-				value = o[key];
-				//verbose && trace(key,type,value);
-				switch(type)
-				{
-					case "String":
-						_setupStringData(key,value);
-						break;
-					case "uint":
-						temp = value as String;
-						if(temp && temp.indexOf("#")==0)
-						{
-							_setupColor(key,temp);
-						}
-						else
-						{
-							_setupUintData(key,value);
-						}
-						break;
-				}
-			}
-		}
-		
-		private function _setupStringData(key:String,value:Object):void
-		{
-			this[key] = _selectParam(value,this[key]) as String;
-			verbose && trace("string : ",key,this[key]);
-		}
-		
-		private function _setupUintData(key:String,value:Object):void
-		{
-			this[key] = _selectParam(value,this[key]) as uint;
-			verbose && trace("uint : ",key,this[key]);
-		}
-		
-		private function _setupColor(key:String,colorString:String):void
-		{
-			colorString = colorString.replace("#","");
-			if(colorString.length==3)
-			{
-				var a:Array = colorString.split("");
-				colorString = a[0]+a[0]+a[1]+a[1]+a[2]+a[2];
-			}
-			this[key] = parseInt("0x" + colorString,16) as uint;
-			verbose && trace("color : ",key,"#"+this[key]);
-		}
-		
-		private function _selectParam(newVal:Object,defaltValue:Object):Object
-		{			
-			if(newVal == null || typeof newVal == "undefined")
-			{
-				return defaltValue;
-			}
-			else
-			{
-				return newVal;
-			}
-		}
+
 		
 	}
 }
