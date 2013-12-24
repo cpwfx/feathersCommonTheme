@@ -55,6 +55,17 @@ package harayoki.starling.feathers.themes
 		//callout
 		public var calloutStagePadding:int = 16;
 		
+		//slider
+		public var sliderSize:SizeSettingForTheme = new SizeSettingForTheme(60,210);
+		
+		//textinput
+		public var textInputFontSize:int = 24; 
+		public var textInputFontFamily:String = "_sans";//オリジナルはHelvetica 
+		public var textInputGap:int = 12; 
+		public var textInputSize:SizeSettingForTheme = new SizeSettingForTheme(264,60); 
+		public var textInputMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60); 
+		public var textInputMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88); 
+		public var textInputPadding:PaddingSettingForTheme = new PaddingSettingForTheme(12,14,10,14); 
 		
 		public function CommonThemeConfig()
 		{

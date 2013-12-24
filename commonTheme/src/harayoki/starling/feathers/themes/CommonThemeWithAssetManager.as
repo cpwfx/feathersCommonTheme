@@ -25,7 +25,6 @@
 package harayoki.starling.feathers.themes
 {
 	import flash.errors.IllegalOperationError;
-	import flash.geom.Rectangle;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import flash.text.engine.CFFHinting;
@@ -1178,13 +1177,13 @@ package harayoki.starling.feathers.themes
 			};
 			if(slider.direction == Slider.DIRECTION_VERTICAL)
 			{
-				skinSelector.displayObjectProperties.width = 60 * this.scale;
-				skinSelector.displayObjectProperties.height = 210 * this.scale;
+				skinSelector.displayObjectProperties.width = this._config.sliderSize.width * this.scale;
+				skinSelector.displayObjectProperties.height = this._config.sliderSize.height * this.scale;
 			}
 			else
 			{
-				skinSelector.displayObjectProperties.width = 210 * this.scale;
-				skinSelector.displayObjectProperties.height = 60 * this.scale;
+				skinSelector.displayObjectProperties.width = this._config.sliderSize.height * this.scale;
+				skinSelector.displayObjectProperties.height = this._config.sliderSize.width * this.scale;
 			}
 			slider.minimumTrackProperties.stateToSkinFunction = skinSelector.updateValue;
 			slider.maximumTrackProperties.stateToSkinFunction = skinSelector.updateValue;
@@ -1225,27 +1224,33 @@ package harayoki.starling.feathers.themes
 
 		protected function baseTextInputInitializer(input:TextInput):void
 		{
+			
+			var config:CommonThemeConfig = this._config;
+			
 			var skinSelector:SmartDisplayObjectStateValueSelector = new SmartDisplayObjectStateValueSelector();
 			skinSelector.defaultValue = this.backgroundInsetSkinTextures;
 			skinSelector.setValueForState(this.backgroundDisabledSkinTextures, TextInput.STATE_DISABLED);
 			skinSelector.setValueForState(this.backgroundFocusedSkinTextures, TextInput.STATE_FOCUSED);
 			skinSelector.displayObjectProperties =
 			{
-				width: 264 * this.scale,
-				height: 60 * this.scale,
+				width: config.textInputSize.width * this.scale,
+				height: config.textInputSize.height * this.scale,
 				textureScale: this.scale
 			};
 			input.stateToSkinFunction = skinSelector.updateValue;
 
-			input.minWidth = input.minHeight = 60 * this.scale;
-			input.minTouchWidth = input.minTouchHeight = 88 * this.scale;
-			input.gap = 12 * this.scale;
-			input.paddingTop = 12 * this.scale;
-			input.paddingBottom = 10 * this.scale;
-			input.paddingLeft = input.paddingRight = 14 * this.scale;
-			input.textEditorProperties.fontFamily = "Helvetica";
-			input.textEditorProperties.fontSize = 24 * this.scale;
-			input.textEditorProperties.color = this._config.lightTextColor;
+			input.minWidth = config.textInputMinSize.width * this.scale;
+			input.minHeight = config.textInputMinSize.height * this.scale;
+			input.minTouchWidth = config.textInputMinTouchSize.width * this.scale;
+			input.minTouchHeight = config.textInputMinTouchSize.height * this.scale;
+			input.gap = config.textInputGap * this.scale;
+			input.paddingTop = config.textInputPadding.top * this.scale;
+			input.paddingRight = config.textInputPadding.right * this.scale;
+			input.paddingBottom = config.textInputPadding.bottom * this.scale;
+			input.paddingLeft = config.textInputPadding.left * this.scale;
+			input.textEditorProperties.fontFamily = config.textInputFontFamily;
+			input.textEditorProperties.fontSize = config.textInputFontSize * this.scale;
+			input.textEditorProperties.color = config.lightTextColor;
 
 			input.promptProperties.elementFormat = this.lightElementFormat;
 		}
