@@ -140,10 +140,6 @@ package harayoki.starling.feathers.themes
 			return quad;
 		}
 
-		/* costom */
-		protected var _config:CommonThemeConfig;
-		/**/
-		
 		public function CommonThemeWithAssetManager(themeId:String,assets:Object = null, assetManager:AssetManager = null, container:DisplayObjectContainer = null, scaleToDPI:Boolean = true)
 		{
 			if(!container)
@@ -157,6 +153,13 @@ package harayoki.starling.feathers.themes
 			this.processSource(assets, assetManager);
 		}
 
+		protected var _config:CommonThemeConfig;
+		
+		public function get config():CommonThemeConfig
+		{
+			return this._config;
+		}
+				
 		protected var _themeId:String;
 		
 		public function get themeId():String
@@ -298,8 +301,8 @@ package harayoki.starling.feathers.themes
 				return;
 			}
 
-			this.root.stage.color = _config.backgroundColor;
-			Starling.current.nativeStage.color = _config.backgroundColor;
+			this.root.stage.color = this._config.backgroundColor;
+			Starling.current.nativeStage.color = this._config.backgroundColor;
 		}
 
 		protected function assetManager_onProgress(progress:Number):void
@@ -696,11 +699,15 @@ package harayoki.starling.feathers.themes
 			button.disabledLabelProperties.elementFormat = this.darkUIDisabledElementFormat;
 			button.selectedDisabledLabelProperties.elementFormat = this.darkUIDisabledElementFormat;
 
-			button.paddingTop = button.paddingBottom = 8 * this.scale;
-			button.paddingLeft = button.paddingRight = 16 * this.scale;
-			button.gap = 12 * this.scale;
-			button.minWidth = button.minHeight = 60 * this.scale;
-			button.minTouchWidth = button.minTouchHeight = 88 * this.scale;
+			button.paddingTop = this._config.btnPaddingTop * this.scale;
+			button.paddingBottom = this._config.btnPaddingBottom * this.scale;
+			button.paddingLeft = this._config.btnPaddingLeft * this.scale;
+			button.paddingRight = this._config.btnPaddingRight * this.scale;
+			button.gap = this._config.btnGap * this.scale;
+			button.minWidth = this._config.btnMinWidth * this.scale;
+			button.minHeight = this._config.btnMinHeight * this.scale;
+			button.minTouchWidth = this._config.btnMinTouchWidth * this.scale;
+			button.minTouchHeight = this._config.btnMinTouchHeight * this.scale;
 		}
 
 		protected function buttonInitializer(button:Button):void

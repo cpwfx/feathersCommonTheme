@@ -38,12 +38,28 @@ package harayoki.starling.feathers.themes
 		public var scrollBarThumbRegion1:int = 5;
 		public var scrollBarThumbRegion2:int = 14;
 		
-		//追加されたパラメータ
+		/* 追加されたパラメータ */ 
+		
+		//font
 		public var fontSizeNormal:int = 24;
 		public var fontSizeSmall:int = 28;
 		public var fontSizeLarge:int = 18;
 		public var fontSizeHeader:int = 36;
+		
+		//button
+		public var btnPaddingTop:int = 8;
+		public var btnPaddingBottom:int = 8;
+		public var btnPaddingLeft:int = 16;
+		public var btnPaddingRight:int = 16;
+		public var btnGap:int = 12;
+		public var btnMinWidth:int = 60;
+		public var btnMinHeight:int = 60;
+		public var btnMinTouchWidth:int = 88;
+		public var btnMinTouchHeight:int = 88;
+		
+		//callout
 		public var calloutStagePadding:int = 16;
+		
 		
 		public function CommonThemeConfig()
 		{
