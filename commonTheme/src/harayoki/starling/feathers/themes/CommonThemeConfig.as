@@ -20,9 +20,22 @@ package harayoki.starling.feathers.themes
 		}
 		
 		//public var の名前は jsonのパラメータと同じです
-		public var fontname:String = "_sans";
-		public var atlasname:String = "";
-		public var backgroundcolor:uint = 0x111111;
+		public var fontName:String = "_sans";
+		public var atlasName:String = "";
+		public var backgroundColor:uint = 0x4a4137;
+		
+		public var lightTextColor:uint = 0xe5e5e5;
+		public var darkTextColor:uint = 0x1a1816;
+		public var selectedTextColor:uint = 0xff9900;
+		public var disabledTextColor:uint = 0x8a8a8a;
+		public var darkDisabledTextColor:uint = 0x383430;
+		public var listBackgroundColor:uint = 0x383430;
+		public var tabBackgroundColor:uint = 0x1a1816;
+		public var tabDisabledBackgroundColor:uint = 0x292624;
+		public var groupedListHeaderBackgroundColor:uint = 0x2e2a26;
+		public var groupedListFooterBackgroundColor:uint = 0x2e2a26;
+		public var modalOverlayColor:uint = 0x29241e;
+		public var modalOverlayAlpha:Number = 0.8;
 
 		public function CommonThemeConfig()
 		{
@@ -38,7 +51,7 @@ package harayoki.starling.feathers.themes
 			{
 				type = _variablesAndTypes[key];
 				value = o[key];
-				//trace(key,type,value);
+				//verbose && trace(key,type,value);
 				switch(type)
 				{
 					case "String":
@@ -49,6 +62,10 @@ package harayoki.starling.feathers.themes
 						if(temp && temp.indexOf("#")==0)
 						{
 							_setupColor(key,temp);
+						}
+						else
+						{
+							_setupUintData(key,value);
 						}
 						break;
 				}
@@ -61,6 +78,12 @@ package harayoki.starling.feathers.themes
 			verbose && trace("string : ",key,this[key]);
 		}
 		
+		private function _setupUintData(key:String,value:Object):void
+		{
+			this[key] = _selectParam(value,this[key]) as uint;
+			verbose && trace("uint : ",key,this[key]);
+		}
+		
 		private function _setupColor(key:String,colorString:String):void
 		{
 			colorString = colorString.replace("#","");
@@ -70,7 +93,7 @@ package harayoki.starling.feathers.themes
 				colorString = a[0]+a[0]+a[1]+a[1]+a[2]+a[2];
 			}
 			this[key] = parseInt("0x" + colorString,16) as uint;
-			verbose && trace("color : ",key,this[key]);
+			verbose && trace("color : ",key,"#"+this[key]);
 		}
 		
 		private function _selectParam(newVal:Object,defaltValue:Object):Object

@@ -1,6 +1,7 @@
 {
-    "fontname":"_ゴシック",
-    "atlasname": "metalworks",
-    "backgroundcolor":"#4a4137",
-    "_eof_":""
+    "fontName":"_ゴシック",
+    "atlasName": "metalworks",
+    "backgroundColor":"#4a4137",
+    "lightTextColor":"#e5e5e5",
+    "_comment_":""
 }

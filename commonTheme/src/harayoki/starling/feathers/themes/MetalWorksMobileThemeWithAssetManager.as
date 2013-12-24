@@ -110,19 +110,6 @@ package harayoki.starling.feathers.themes
 		[Embed(source="fonts/SourceSansPro-Semibold.ttf",fontFamily="SourceSansPro",fontWeight="bold",unicodeRange="U+0030-U+0039",mimeType="application/x-font",embedAsCFF="false")]
 		protected static const SOURCE_SANS_PRO_SEMIBOLD_NUMBERS:Class;*/
 
-		protected static const LIGHT_TEXT_COLOR:uint = 0xe5e5e5;
-		protected static const DARK_TEXT_COLOR:uint = 0x1a1816;
-		protected static const SELECTED_TEXT_COLOR:uint = 0xff9900;
-		protected static const DISABLED_TEXT_COLOR:uint = 0x8a8a8a;
-		protected static const DARK_DISABLED_TEXT_COLOR:uint = 0x383430;
-		protected static const LIST_BACKGROUND_COLOR:uint = 0x383430;
-		protected static const TAB_BACKGROUND_COLOR:uint = 0x1a1816;
-		protected static const TAB_DISABLED_BACKGROUND_COLOR:uint = 0x292624;
-		protected static const GROUPED_LIST_HEADER_BACKGROUND_COLOR:uint = 0x2e2a26;
-		protected static const GROUPED_LIST_FOOTER_BACKGROUND_COLOR:uint = 0x2e2a26;
-		protected static const MODAL_OVERLAY_COLOR:uint = 0x29241e;
-		protected static const MODAL_OVERLAY_ALPHA:Number = 0.8;
-
 		protected static const ORIGINAL_DPI_IPHONE_RETINA:int = 326;
 		protected static const ORIGINAL_DPI_IPAD_RETINA:int = 264;
 
@@ -159,15 +146,15 @@ package harayoki.starling.feathers.themes
 			return new TextFieldTextEditor();
 		}
 
-		protected static function popUpOverlayFactory():DisplayObject
+		protected static function popUpOverlayFactory(config:CommonThemeConfig):DisplayObject
 		{
-			const quad:Quad = new Quad(100, 100, MODAL_OVERLAY_COLOR);
-			quad.alpha = MODAL_OVERLAY_ALPHA;
+			const quad:Quad = new Quad(100, 100, config.modalOverlayColor);
+			quad.alpha = config.modalOverlayAlpha;
 			return quad;
 		}
 
 		/* costom */
-		protected var _themeConfig:CommonThemeConfig;
+		protected var _config:CommonThemeConfig;
 		/**/
 		
 		public function MetalWorksMobileThemeWithAssetManager(assets:Object = null, assetManager:AssetManager = null, container:DisplayObjectContainer = null, scaleToDPI:Boolean = true)
@@ -178,7 +165,7 @@ package harayoki.starling.feathers.themes
 			}
 			super(container);
 			this._scaleToDPI = scaleToDPI;
-			this._themeConfig = new CommonThemeConfig();
+			this._config = new CommonThemeConfig();
 			this.processSource(assets, assetManager);
 		}
 
@@ -304,7 +291,7 @@ package harayoki.starling.feathers.themes
 			if(this.assetManager)
 			{
 				
-				this.assetManager.removeTextureAtlas(this._themeConfig.atlasname);
+				this.assetManager.removeTextureAtlas(this._config.atlasName);
 			}
 			super.dispose();
 		}
@@ -316,8 +303,8 @@ package harayoki.starling.feathers.themes
 				return;
 			}
 
-			this.root.stage.color = _themeConfig.backgroundcolor;
-			Starling.current.nativeStage.color = _themeConfig.backgroundcolor;
+			this.root.stage.color = _config.backgroundColor;
+			Starling.current.nativeStage.color = _config.backgroundColor;
 		}
 
 		protected function assetManager_onProgress(progress:Number):void
@@ -377,8 +364,8 @@ package harayoki.starling.feathers.themes
 			{
 				if(this.assetManager)
 				{
-					trace("this._themeConfig.atlasname",this._themeConfig.atlasname);
-					this.atlas = this.assetManager.getTextureAtlas(this._themeConfig.atlasname);
+					trace("this._themeConfig.atlasname",this._config.atlasName);
+					this.atlas = this.assetManager.getTextureAtlas(this._config.atlasName);
 				}
 				else
 				{
@@ -405,7 +392,7 @@ package harayoki.starling.feathers.themes
 		
 		protected function initializeConfig():void
 		{
-			this._themeConfig.applyJsonData(this.assetManager.getObject("metalworks_config"));
+			this._config.applyJsonData(this.assetManager.getObject("metalworks_config"));
 		}
 
 		protected function initializeGlobals():void
@@ -439,35 +426,35 @@ package harayoki.starling.feathers.themes
 		protected function initializeFonts():void
 		{
 			//these are for components that don't use FTE
-			this.scrollTextTextFormat = new TextFormat(this._themeConfig.fontname, 24 * this.scale, LIGHT_TEXT_COLOR);
-			this.lightUICenteredTextFormat = new TextFormat(this._themeConfig.fontname, 24 * this.scale, LIGHT_TEXT_COLOR, true, null, null, null, null, TextFormatAlign.CENTER);
+			this.scrollTextTextFormat = new TextFormat(this._config.fontName, 24 * this.scale, this._config.lightTextColor);
+			this.lightUICenteredTextFormat = new TextFormat(this._config.fontName, 24 * this.scale, this._config.lightTextColor, true, null, null, null, null, TextFormatAlign.CENTER);
 
-			this.regularFontDescription = new FontDescription(this._themeConfig.fontname, FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
-			this.boldFontDescription = new FontDescription(this._themeConfig.fontname, FontWeight.BOLD, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
+			this.regularFontDescription = new FontDescription(this._config.fontName, FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
+			this.boldFontDescription = new FontDescription(this._config.fontName, FontWeight.BOLD, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
 
-			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(36 * this.scale), LIGHT_TEXT_COLOR);
+			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(36 * this.scale), this._config.lightTextColor);
 
-			this.darkUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, DARK_TEXT_COLOR);
-			this.lightUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, LIGHT_TEXT_COLOR);
-			this.selectedUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, SELECTED_TEXT_COLOR);
-			this.lightUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, DISABLED_TEXT_COLOR);
-			this.darkUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, DARK_DISABLED_TEXT_COLOR);
+			this.darkUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.darkTextColor);
+			this.lightUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.lightTextColor);
+			this.selectedUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.selectedTextColor);
+			this.lightUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.disabledTextColor);
+			this.darkUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.darkDisabledTextColor);
 
-			this.largeUIDarkElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, DARK_TEXT_COLOR);
-			this.largeUILightElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, LIGHT_TEXT_COLOR);
-			this.largeUISelectedElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, SELECTED_TEXT_COLOR);
-			this.largeUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, DISABLED_TEXT_COLOR);
+			this.largeUIDarkElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, this._config.darkTextColor);
+			this.largeUILightElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, this._config.lightTextColor);
+			this.largeUISelectedElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, this._config.selectedTextColor);
+			this.largeUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, this._config.disabledTextColor);
 
-			this.darkElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, DARK_TEXT_COLOR);
-			this.lightElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, LIGHT_TEXT_COLOR);
-			this.disabledElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, DISABLED_TEXT_COLOR);
+			this.darkElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, this._config.darkTextColor);
+			this.lightElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, this._config.lightTextColor);
+			this.disabledElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, this._config.disabledTextColor);
 
-			this.smallLightElementFormat = new ElementFormat(this.regularFontDescription, 18 * this.scale, LIGHT_TEXT_COLOR);
-			this.smallDisabledElementFormat = new ElementFormat(this.regularFontDescription, 18 * this.scale, DISABLED_TEXT_COLOR);
+			this.smallLightElementFormat = new ElementFormat(this.regularFontDescription, 18 * this.scale, this._config.lightTextColor);
+			this.smallDisabledElementFormat = new ElementFormat(this.regularFontDescription, 18 * this.scale, this._config.disabledTextColor);
 
-			this.largeDarkElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, DARK_TEXT_COLOR);
-			this.largeLightElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, LIGHT_TEXT_COLOR);
-			this.largeDisabledElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, DISABLED_TEXT_COLOR);
+			this.largeDarkElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, this._config.darkTextColor);
+			this.largeLightElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, this._config.lightTextColor);
+			this.largeDisabledElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, this._config.disabledTextColor);
 		}
 
 		protected function initializeTextures():void
@@ -895,7 +882,7 @@ package harayoki.starling.feathers.themes
 
 		protected function tabInitializer(tab:Button):void
 		{
-			const defaultSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, TAB_BACKGROUND_COLOR);
+			const defaultSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.tabBackgroundColor);
 			tab.defaultSkin = defaultSkin;
 
 			const downSkin:Scale9Image = new Scale9Image(this.tabDownSkinTextures, this.scale);
@@ -904,7 +891,7 @@ package harayoki.starling.feathers.themes
 			const defaultSelectedSkin:Scale9Image = new Scale9Image(this.tabSelectedSkinTextures, this.scale);
 			tab.defaultSelectedSkin = defaultSelectedSkin;
 
-			const disabledSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, TAB_DISABLED_BACKGROUND_COLOR);
+			const disabledSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.tabDisabledBackgroundColor);
 			tab.disabledSkin = disabledSkin;
 
 			const selectedDisabledSkin:Scale9Image = new Scale9Image(this.tabSelectedDisabledSkinTextures, this.scale);
@@ -1067,7 +1054,7 @@ package harayoki.starling.feathers.themes
 
 		protected function headerRendererInitializer(renderer:DefaultGroupedListHeaderOrFooterRenderer):void
 		{
-			const defaultSkin:Quad = new Quad(44 * this.scale, 44 * this.scale, GROUPED_LIST_HEADER_BACKGROUND_COLOR);
+			const defaultSkin:Quad = new Quad(44 * this.scale, 44 * this.scale, this._config.groupedListHeaderBackgroundColor);
 			renderer.backgroundSkin = defaultSkin;
 
 			renderer.horizontalAlign = DefaultGroupedListHeaderOrFooterRenderer.HORIZONTAL_ALIGN_LEFT;
@@ -1082,7 +1069,7 @@ package harayoki.starling.feathers.themes
 
 		protected function footerRendererInitializer(renderer:DefaultGroupedListHeaderOrFooterRenderer):void
 		{
-			const defaultSkin:Quad = new Quad(44 * this.scale, 44 * this.scale, GROUPED_LIST_FOOTER_BACKGROUND_COLOR);
+			const defaultSkin:Quad = new Quad(44 * this.scale, 44 * this.scale, this._config.groupedListFooterBackgroundColor);
 			renderer.backgroundSkin = defaultSkin;
 
 			renderer.horizontalAlign = DefaultGroupedListHeaderOrFooterRenderer.HORIZONTAL_ALIGN_CENTER;
@@ -1256,7 +1243,7 @@ package harayoki.starling.feathers.themes
 			input.paddingLeft = input.paddingRight = 14 * this.scale;
 			input.textEditorProperties.fontFamily = "Helvetica";
 			input.textEditorProperties.fontSize = 24 * this.scale;
-			input.textEditorProperties.color = LIGHT_TEXT_COLOR;
+			input.textEditorProperties.color = this._config.lightTextColor;
 
 			input.promptProperties.elementFormat = this.lightElementFormat;
 		}
@@ -1459,13 +1446,13 @@ package harayoki.starling.feathers.themes
 
 		protected function listInitializer(list:List):void
 		{
-			const backgroundSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, LIST_BACKGROUND_COLOR);
+			const backgroundSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.listBackgroundColor);
 			list.backgroundSkin = backgroundSkin;
 		}
 
 		protected function groupedListInitializer(list:GroupedList):void
 		{
-			const backgroundSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, LIST_BACKGROUND_COLOR);
+			const backgroundSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.listBackgroundColor);
 			list.backgroundSkin = backgroundSkin;
 		}
 
