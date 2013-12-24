@@ -4,7 +4,9 @@ package harayoki.starling.feathers.themes
 
 	public class CommonThemeConfig extends ThemeConfig
 	{
-		//public var の名前は jsonのパラメータと同じです
+		//それぞれのpublic var の名前は jsonのパラメータと同じです
+		
+		/* themeファイルに元々定義されていたパラメータ */
 		
 		public var fontName:String = "_sans";
 		public var atlasName:String = "";
@@ -41,6 +43,7 @@ package harayoki.starling.feathers.themes
 		/* 追加されたパラメータ */ 
 		
 		//font
+		public var fontFile:String = "";//"SourceSansPro.swf"などフォント埋め込み済みのswfを指定します
 		public var fontSizeNormal:int = 24;
 		public var fontSizeSmall:int = 28;
 		public var fontSizeLarge:int = 18;

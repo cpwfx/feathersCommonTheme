@@ -24,6 +24,7 @@
  */
 package harayoki.starling.feathers.themes
 {
+	import flash.display.MovieClip;
 	import flash.errors.IllegalOperationError;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
@@ -303,13 +304,9 @@ package harayoki.starling.feathers.themes
 			this.root.stage.color = this._config.backgroundColor;
 			Starling.current.nativeStage.color = this._config.backgroundColor;
 		}
-
-		protected function assetManager_onProgress(progress:Number):void
+		
+		protected function assetManager_onComplete():void
 		{
-			if(progress < 1)
-			{
-				return;
-			}
 			this.initialize();
 			this.dispatchEventWith(Event.COMPLETE);
 		}
@@ -318,12 +315,16 @@ package harayoki.starling.feathers.themes
 		{
 			if(assets)
 			{
+				function isDirectory():Boolean
+				{
+					return getQualifiedClassName(assets) == "flash.filesystem::File" && assets["isDirectory"];
+				}
+				
 				this.assetManager = assetManager;
 				if(!this.assetManager)
 				{
 					this.assetManager = new AssetManager(Starling.contentScaleFactor);
 				}
-				//add a trailing slash, if needed
 				if(assets is String)
 				{
 					var assetsDirectoryName:String = assets as String;
@@ -335,7 +336,7 @@ package harayoki.starling.feathers.themes
 					this.assetManager.enqueue(assets + this._themeId + ".png");
 					this.assetManager.enqueue(assets + this._themeId + "_config.json");
 				}
-				else if(getQualifiedClassName(assets) == "flash.filesystem::File" && assets["isDirectory"])
+				else if(isDirectory())
 				{
 					this.assetManager.enqueue(assets["resolvePath"](this._themeId + ".xml"));
 					this.assetManager.enqueue(assets["resolvePath"](this._themeId + ".png"));
@@ -343,19 +344,57 @@ package harayoki.starling.feathers.themes
 				}
 				else
 				{
-					this.assetManager.enqueue(assets);
+					//this.assetManager.enqueue(assets);
+					throw new Error("assets must be 'filepath as String' or 'directory as File Object'. Theme not loaded.");
 				}
-				this.assetManager.loadQueue(assetManager_onProgress);
+				var self:CommonThemeWithAssetManager = this;
+				
+				function onProgress (progress:Number):void
+				{
+					if(progress<1) return;
+					
+					self.initializeConfig();
+					trace("fontfile",self._config.fontFile);
+					if(self._config.fontFile)
+					{
+						var loader:FontSwfLoader = new FontSwfLoader();
+						if(assets is String)
+						{
+							loader.load(assets + self._config.fontFile,onFontSwfLoad);
+						}
+						else
+						{
+							loader.load(assets["resolvePath"](self._config.fontFile)["nativePath"] as String,onFontSwfLoad);//TODO 未検証
+						}
+					}						
+					else
+					{
+						assetManager_onComplete();
+					}
+				}
+				
+				function onFontSwfLoad (dobj:flash.display.MovieClip):void
+				{
+					if(dobj)
+					{
+						dobj.stop();
+						dobj.visible = false;
+						Starling.current.nativeStage.addChild(dobj);//TODO チェックaddChildする必要がある？
+					}
+					assetManager_onComplete();
+				}
+				
+				this.assetManager.loadQueue(onProgress);
+				
 			}
 			else
 			{
-				throw new Error("Asset path not found. Theme not loaded.")
+				throw new Error("Asset path not found. Theme not loaded.");
 			}
 		}
 
 		protected function initialize():void
 		{
-			this.initializeConfig();
 				
 			if(!this.atlas)
 			{

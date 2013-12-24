@@ -1,16 +1,18 @@
 {
-    "backgroundColor":"#4a4137",
-    
-    "fontName":"_ゴシック",
+	"fontFile":"SourceSansPro.swf",
+    "fontName":"SourceSansPro",
+	
+    "backgroundColor":"#4a4137",    
 	"fontSizeNormal":24,
-	"fontSizeSmall":28,
-	"fontSizeLarge":18,
+	"fontSizeSmall":18,
+	"fontSizeLarge":28,
 	"fontSizeHeader":36,
     "lightTextColor":"#e5e5e5",
     
     "btnPadding":[8,16,8,16],
 	
     "atlasName": "metalworks",
+	
     "_comment_":""
     
     
