@@ -20,7 +20,7 @@ package
 			Starling.handleLostContext = true;
 			_starling = new Starling(ThemeTest,Objects.stage,new Rectangle(0,0,Constants.CONTENTS_WIDTH,Constants.CONTENTS_HEIGHT));
 			_starling.showStats = true;
-			_starling.showStatsAt("right","top",2);				
+			_starling.showStatsAt("left","top",2);				
 		}
 		
 		public function ThemeTest()
@@ -33,7 +33,7 @@ package
 			stage.addEventListener(Event.RESIZE,_handleStageResize);
 			
 			_starling.start();
-			var themeManager:MetalWorksMobileThemeWithAssetManager = new MetalWorksMobileThemeWithAssetManager("assets/",Objects.assetManager,this,false);
+			var themeManager:MetalWorksMobileThemeWithAssetManager = new MetalWorksMobileThemeWithAssetManager("assets/",Objects.assetManager,stage,false);
 			themeManager.addEventListener(Event.COMPLETE,_handleThemeManagerReady);
 			
 		}

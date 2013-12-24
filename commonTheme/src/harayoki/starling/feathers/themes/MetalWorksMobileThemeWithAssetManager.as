@@ -112,7 +112,6 @@ package harayoki.starling.feathers.themes
 
 		protected static const FONT_NAME:String = "_ゴシック";
 
-		protected static const PRIMARY_BACKGROUND_COLOR:uint = 0x4a4137;
 		protected static const LIGHT_TEXT_COLOR:uint = 0xe5e5e5;
 		protected static const DARK_TEXT_COLOR:uint = 0x1a1816;
 		protected static const SELECTED_TEXT_COLOR:uint = 0xff9900;
@@ -319,8 +318,8 @@ package harayoki.starling.feathers.themes
 				return;
 			}
 
-			this.root.stage.color = PRIMARY_BACKGROUND_COLOR;
-			Starling.current.nativeStage.color = PRIMARY_BACKGROUND_COLOR;
+			this.root.stage.color = _themeConfig.backgroundcolor;
+			Starling.current.nativeStage.color = _themeConfig.backgroundcolor;
 		}
 
 		protected function assetManager_onProgress(progress:Number):void
