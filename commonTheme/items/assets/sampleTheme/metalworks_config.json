@@ -1,6 +1,7 @@
 {
-	"fontFile":"SourceSansPro.swf",
-    "fontName":"SourceSansPro",
+	"fontFile":"cinecaption.swf",
+	"fontClassList":["MyCinecaption"],
+    "fontName":"cinecaption",
 	
     "backgroundColor":"#4a4137",    
 	"fontSizeNormal":24,

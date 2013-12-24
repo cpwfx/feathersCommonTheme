@@ -360,11 +360,11 @@ package harayoki.starling.feathers.themes
 						var loader:FontSwfLoader = new FontSwfLoader();
 						if(assets is String)
 						{
-							loader.load(assets + self._config.fontFile,onFontSwfLoad);
+							loader.load(assets + self._config.fontFile,self._config.fontClassList,onFontSwfLoad);
 						}
 						else
 						{
-							loader.load(assets["resolvePath"](self._config.fontFile)["nativePath"] as String,onFontSwfLoad);//TODO 未検証
+							loader.load(assets["resolvePath"](self._config.fontFile)["nativePath"] as String,self._config.fontClassList,onFontSwfLoad);//TODO 未検証
 						}
 					}						
 					else
@@ -373,13 +373,13 @@ package harayoki.starling.feathers.themes
 					}
 				}
 				
-				function onFontSwfLoad (dobj:flash.display.MovieClip):void
+				function onFontSwfLoad (swf:flash.display.MovieClip):void
 				{
-					if(dobj)
+					if(swf)
 					{
-						dobj.stop();
-						dobj.visible = false;
-						Starling.current.nativeStage.addChild(dobj);//TODO チェックaddChildする必要がある？
+						swf.x = 100;//test用
+						swf.visible = true;//test用
+						Starling.current.nativeStage.addChild(swf);//TODO チェックaddChildする必要がある？
 					}
 					assetManager_onComplete();
 				}

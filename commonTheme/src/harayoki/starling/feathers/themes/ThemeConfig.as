@@ -67,6 +67,9 @@ package harayoki.starling.feathers.themes
 							_setupUintData(key,value);
 						}
 						break;
+					case "Array":
+						_setupArray(key,value);
+						break;
 					case "flash.geom::Rectangle":
 						_setupRectangle(key,value);
 						break;
@@ -108,6 +111,13 @@ package harayoki.starling.feathers.themes
 		{
 			this[key] = _selectParam(value,this[key]) as Number;
 			verbose && trace("Number : ",key,this[key]);
+		}		
+		
+		protected function _setupArray(key:String,value:Object):void
+		{
+			var arr:Array = value as Array;
+			this[key] = _selectParam(arr,this[key]) as Array;
+			verbose && trace("Array : ",key,this[key]);
 		}		
 		
 		protected function _setupRectangle(key:String,value:Object):void

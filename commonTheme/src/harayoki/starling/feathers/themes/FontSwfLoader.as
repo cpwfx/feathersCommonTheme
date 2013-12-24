@@ -1,15 +1,18 @@
 package harayoki.starling.feathers.themes
 {
 	import flash.display.Loader;
+	import flash.display.MovieClip;
 	import flash.events.ErrorEvent;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.events.SecurityErrorEvent;
 	import flash.net.URLRequest;
+	import flash.text.Font;
 
 	public class FontSwfLoader
 	{
 		private var _loader:Loader;
+		private var _fontClassList:Array;
 		private var _callback:Function;
 		
 		public function FontSwfLoader()
@@ -20,11 +23,14 @@ package harayoki.starling.feathers.themes
 		{
 			_cleanLoader();
 			_loader = null;
+			_fontClassList = null;
 			_callback = null;
 		}
 		
-		public function load(path:String,callback:Function):void
+		public function load(path:String,fontClassList:Array,callback:Function):void
 		{
+			_fontClassList = fontClassList;
+			
 			var req:URLRequest = new URLRequest(path);
 			_callback = callback;
 			_loader = new Loader();
@@ -36,7 +42,31 @@ package harayoki.starling.feathers.themes
 		
 		private function _handleComplete(ev:Event):void
 		{
-			_callback && _callback.apply(null,[_loader.content]);
+			
+			var swf:MovieClip = _loader.content as MovieClip;
+			swf.stop();
+			
+			for each(var fontClassName:String in _fontClassList)
+			{
+				if(_loader.contentLoaderInfo.applicationDomain.hasDefinition(fontClassName))
+				{
+					var MyFont:Class = _loader.contentLoaderInfo.applicationDomain.getDefinition("MyCinecaption") as Class;
+					Font.registerFont(MyFont);					
+				}
+				else
+				{
+					trace("font class",fontClassName,"not found");
+				}
+			}
+			
+			
+			var fonts:Array = Font.enumerateFonts(false);
+			for each(var font:Font in fonts)
+			{
+				trace("font:",font.fontName,font.fontStyle,font.fontType);
+			}
+						
+			_callback && _callback.apply(null,[swf]);
 			clean();
 		}
 		

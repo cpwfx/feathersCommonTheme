@@ -44,6 +44,7 @@ package harayoki.starling.feathers.themes
 		
 		//font
 		public var fontFile:String = "";//"SourceSansPro.swf"などフォント埋め込み済みのswfを指定します
+		public var fontClassList:Array = [];
 		public var fontSizeNormal:int = 24;
 		public var fontSizeSmall:int = 28;
 		public var fontSizeLarge:int = 18;
