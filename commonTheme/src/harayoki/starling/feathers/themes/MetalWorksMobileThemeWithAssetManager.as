@@ -110,8 +110,6 @@ package harayoki.starling.feathers.themes
 		[Embed(source="fonts/SourceSansPro-Semibold.ttf",fontFamily="SourceSansPro",fontWeight="bold",unicodeRange="U+0030-U+0039",mimeType="application/x-font",embedAsCFF="false")]
 		protected static const SOURCE_SANS_PRO_SEMIBOLD_NUMBERS:Class;*/
 
-		protected static const FONT_NAME:String = "_ゴシック";
-
 		protected static const LIGHT_TEXT_COLOR:uint = 0xe5e5e5;
 		protected static const DARK_TEXT_COLOR:uint = 0x1a1816;
 		protected static const SELECTED_TEXT_COLOR:uint = 0xff9900;
@@ -441,11 +439,11 @@ package harayoki.starling.feathers.themes
 		protected function initializeFonts():void
 		{
 			//these are for components that don't use FTE
-			this.scrollTextTextFormat = new TextFormat("_sans", 24 * this.scale, LIGHT_TEXT_COLOR);
-			this.lightUICenteredTextFormat = new TextFormat(FONT_NAME, 24 * this.scale, LIGHT_TEXT_COLOR, true, null, null, null, null, TextFormatAlign.CENTER);
+			this.scrollTextTextFormat = new TextFormat(this._themeConfig.fontname, 24 * this.scale, LIGHT_TEXT_COLOR);
+			this.lightUICenteredTextFormat = new TextFormat(this._themeConfig.fontname, 24 * this.scale, LIGHT_TEXT_COLOR, true, null, null, null, null, TextFormatAlign.CENTER);
 
-			this.regularFontDescription = new FontDescription(FONT_NAME, FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
-			this.boldFontDescription = new FontDescription(FONT_NAME, FontWeight.BOLD, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
+			this.regularFontDescription = new FontDescription(this._themeConfig.fontname, FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
+			this.boldFontDescription = new FontDescription(this._themeConfig.fontname, FontWeight.BOLD, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
 
 			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(36 * this.scale), LIGHT_TEXT_COLOR);
 
