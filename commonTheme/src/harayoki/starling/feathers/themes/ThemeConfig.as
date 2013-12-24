@@ -2,6 +2,7 @@ package harayoki.starling.feathers.themes
 {
 	import flash.geom.Rectangle;
 	import flash.utils.describeType;
+	import flash.utils.getQualifiedClassName;
 
 	public class ThemeConfig
 	{
@@ -18,7 +19,8 @@ package harayoki.starling.feathers.themes
 				for each(var x:XML in xl) {
 					_variablesAndTypes[x.@name] = x.@type;
 				}
-			}			
+			}	
+			
 		}
 		
 		public var verbose:Boolean = true;
@@ -29,6 +31,10 @@ package harayoki.starling.feathers.themes
 		public function applyJsonData(jsonObject:Object):void
 		{
 			var o:Object = jsonObject || {};
+			
+			const PADDING_CLASS_NAME:String = flash.utils.getQualifiedClassName(PaddingSettingForTheme);
+			const SIZE_CLASS_NAME:String = flash.utils.getQualifiedClassName(SizeSettingForTheme);
+			
 			var key:String, type:String, temp:String;
 			var value:Object;
 			for (key in _variablesAndTypes)
@@ -60,8 +66,11 @@ package harayoki.starling.feathers.themes
 					case "flash.geom::Rectangle":
 						_setupRectangle(key,value);
 						break;
-					case "PaddingSettingForTheme":
+					case PADDING_CLASS_NAME:
 						_setUpPadding(key,value);
+						break;
+					case SIZE_CLASS_NAME:
+						_setUpSize(key,value);
 						break;
 				}
 			}
@@ -112,7 +121,7 @@ package harayoki.starling.feathers.themes
 		{
 			if(value)
 			{
-				if(!(value is Array))
+				if(!(value is Array) || (value as Array).length!=4)
 				{
 					throw(new Error("Padding setting needs array(length:4) data."));
 				}
@@ -124,6 +133,24 @@ package harayoki.starling.feathers.themes
 			this[key] = _selectParam(value,this[key]) as PaddingSettingForTheme;
 			verbose && trace("PaddingSettingForTheme : ",key,this[key]);
 		}
+		
+		protected function _setUpSize(key:String,value:Object):void
+		{
+			if(value)
+			{
+				if(!(value is Array) || (value as Array).length!=2)
+				{
+					throw(new Error("Padding setting needs array(length:2) data."));
+				}
+				else
+				{
+					value = new SizeSettingForTheme(value[0],value[1]);
+				}
+			}
+			this[key] = _selectParam(value,this[key]) as SizeSettingForTheme;
+			verbose && trace("SizeSettingForTheme : ",key,this[key]);
+		}
+		
 		
 		protected function _setupColor(key:String,colorString:String):void
 		{

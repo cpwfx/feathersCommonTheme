@@ -1,4 +1,4 @@
-package
+package harayoki.starling.feathers.themes
 {
 	public class PaddingSettingForTheme
 	{

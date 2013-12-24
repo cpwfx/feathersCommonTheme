@@ -704,10 +704,10 @@ package harayoki.starling.feathers.themes
 			button.paddingLeft = this._config.btnPadding.left * this.scale;
 			button.paddingRight = this._config.btnPadding.right * this.scale;
 			button.gap = this._config.btnGap * this.scale;
-			button.minWidth = this._config.btnMinWidth * this.scale;
-			button.minHeight = this._config.btnMinHeight * this.scale;
-			button.minTouchWidth = this._config.btnMinTouchWidth * this.scale;
-			button.minTouchHeight = this._config.btnMinTouchHeight * this.scale;
+			button.minWidth = this._config.btnMinSize.width * this.scale;
+			button.minHeight = this._config.btnMinSize.height * this.scale;
+			button.minTouchWidth = this._config.btnMinTouchSize.width * this.scale;
+			button.minTouchHeight = this._config.btnMinTouchSize.height * this.scale;
 		}
 
 		protected function buttonInitializer(button:Button):void

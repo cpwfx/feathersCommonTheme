@@ -49,10 +49,8 @@ package harayoki.starling.feathers.themes
 		//button
 		public var btnPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,16,8,16);
 		public var btnGap:int = 12;
-		public var btnMinWidth:int = 60;
-		public var btnMinHeight:int = 60;
-		public var btnMinTouchWidth:int = 88;
-		public var btnMinTouchHeight:int = 88;
+		public var btnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
+		public var btnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
 		//callout
 		public var calloutStagePadding:int = 16;
