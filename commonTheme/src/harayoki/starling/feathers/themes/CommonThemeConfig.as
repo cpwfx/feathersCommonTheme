@@ -38,6 +38,13 @@ package harayoki.starling.feathers.themes
 		public var scrollBarThumbRegion1:int = 5;
 		public var scrollBarThumbRegion2:int = 14;
 		
+		//追加されたパラメータ
+		public var fontSizeNormal:int = 24;
+		public var fontSizeSmall:int = 28;
+		public var fontSizeLarge:int = 18;
+		public var fontSizeHeader:int = 36;
+		public var calloutStagePadding:int = 16;
+		
 		public function CommonThemeConfig()
 		{
 			_analyzeVariables(CommonThemeConfig);

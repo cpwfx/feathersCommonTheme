@@ -4,7 +4,7 @@ package
 	
 	import feathers.controls.Button;
 	
-	import harayoki.starling.feathers.themes.MetalWorksMobileThemeWithAssetManager;
+	import harayoki.starling.feathers.themes.CommonThemeWithAssetManager;
 	
 	import starling.core.Starling;
 	import starling.display.Sprite;
@@ -33,7 +33,7 @@ package
 			stage.addEventListener(Event.RESIZE,_handleStageResize);
 			
 			_starling.start();
-			var themeManager:MetalWorksMobileThemeWithAssetManager = new MetalWorksMobileThemeWithAssetManager("assets/",Objects.assetManager,stage,false);
+			var themeManager:CommonThemeWithAssetManager = new CommonThemeWithAssetManager("metalworks","assets/sampleTheme/",Objects.assetManager,stage,false);
 			themeManager.addEventListener(Event.COMPLETE,_handleThemeManagerReady);
 			
 		}

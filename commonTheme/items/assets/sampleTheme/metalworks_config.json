@@ -1,7 +1,15 @@
 {
-    "fontName":"_ゴシック",
-    "atlasName": "metalworks",
     "backgroundColor":"#4a4137",
+    
+    "fontName":"_ゴシック",
+	"fontSizeNormal":24,
+	"fontSizeSmall":28,
+	"fontSizeLarge":18,
+	"fontSizeHeader":36,
     "lightTextColor":"#e5e5e5",
+	
+    "atlasName": "metalworks",
     "_comment_":""
+    
+    
 }

@@ -99,7 +99,7 @@ package harayoki.starling.feathers.themes
 
 	[Event(name="complete",type="starling.events.Event")]
 
-	public class MetalWorksMobileThemeWithAssetManager extends DisplayListWatcher
+	public class CommonThemeWithAssetManager extends DisplayListWatcher
 	{
 		/*[Embed(source="fonts/SourceSansPro-Regular.ttf",fontFamily="SourceSansPro",fontWeight="normal",mimeType="application/x-font",embedAsCFF="true")]
 		protected static const SOURCE_SANS_PRO_REGULAR:Class;
@@ -132,6 +132,7 @@ package harayoki.starling.feathers.themes
 			return new TextFieldTextEditor();
 		}
 
+		//元はstatic だがconfigの値を参照したいので変更
 		protected function popUpOverlayFactory():DisplayObject
 		{
 			const quad:Quad = new Quad(100, 100, this._config.modalOverlayColor);
@@ -143,18 +144,26 @@ package harayoki.starling.feathers.themes
 		protected var _config:CommonThemeConfig;
 		/**/
 		
-		public function MetalWorksMobileThemeWithAssetManager(assets:Object = null, assetManager:AssetManager = null, container:DisplayObjectContainer = null, scaleToDPI:Boolean = true)
+		public function CommonThemeWithAssetManager(themeId:String,assets:Object = null, assetManager:AssetManager = null, container:DisplayObjectContainer = null, scaleToDPI:Boolean = true)
 		{
 			if(!container)
 			{
 				container = Starling.current.stage;
 			}
 			super(container);
+			this._themeId = themeId;
 			this._scaleToDPI = scaleToDPI;
 			this._config = new CommonThemeConfig();
 			this.processSource(assets, assetManager);
 		}
 
+		protected var _themeId:String;
+		
+		public function get themeId():String
+		{
+			return this._themeId;
+		}
+		
 		protected var _originalDPI:int;
 
 		public function get originalDPI():int
@@ -320,15 +329,15 @@ package harayoki.starling.feathers.themes
 					{
 						assets = assetsDirectoryName + "/";
 					}
-					this.assetManager.enqueue(assets + "sampleTheme/metalworks.xml");
-					this.assetManager.enqueue(assets + "sampleTheme/metalworks.png");
-					this.assetManager.enqueue(assets + "sampleTheme/metalworks_config.json");
+					this.assetManager.enqueue(assets + this._themeId + ".xml");
+					this.assetManager.enqueue(assets + this._themeId + ".png");
+					this.assetManager.enqueue(assets + this._themeId + "_config.json");
 				}
 				else if(getQualifiedClassName(assets) == "flash.filesystem::File" && assets["isDirectory"])
 				{
-					this.assetManager.enqueue(assets["resolvePath"]("sampleTheme/metalworks.xml"));
-					this.assetManager.enqueue(assets["resolvePath"]("sampleTheme/metalworks.png"));
-					this.assetManager.enqueue(assets["resolvePath"]("sampleTheme/metalworks_config.json"));
+					this.assetManager.enqueue(assets["resolvePath"](this._themeId + ".xml"));
+					this.assetManager.enqueue(assets["resolvePath"](this._themeId + ".png"));
+					this.assetManager.enqueue(assets["resolvePath"](this._themeId + "_config.json"));
 				}
 				else
 				{
@@ -378,7 +387,7 @@ package harayoki.starling.feathers.themes
 		
 		protected function initializeConfig():void
 		{
-			this._config.applyJsonData(this.assetManager.getObject("metalworks_config"));
+			this._config.applyJsonData(this.assetManager.getObject(this._themeId + "_config"));
 		}
 
 		protected function initializeGlobals():void
@@ -388,7 +397,7 @@ package harayoki.starling.feathers.themes
 
 			PopUpManager.overlayFactory = popUpOverlayFactory;
 			Callout.stagePaddingTop = Callout.stagePaddingRight = Callout.stagePaddingBottom =
-				Callout.stagePaddingLeft = 16 * this.scale;
+				Callout.stagePaddingLeft = this._config.calloutStagePadding * this.scale;
 		}
 
 		protected function initializeScale():void
@@ -412,35 +421,35 @@ package harayoki.starling.feathers.themes
 		protected function initializeFonts():void
 		{
 			//these are for components that don't use FTE
-			this.scrollTextTextFormat = new TextFormat(this._config.fontName, 24 * this.scale, this._config.lightTextColor);
-			this.lightUICenteredTextFormat = new TextFormat(this._config.fontName, 24 * this.scale, this._config.lightTextColor, true, null, null, null, null, TextFormatAlign.CENTER);
+			this.scrollTextTextFormat = new TextFormat(this._config.fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor);
+			this.lightUICenteredTextFormat = new TextFormat(this._config.fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor, true, null, null, null, null, TextFormatAlign.CENTER);
 
 			this.regularFontDescription = new FontDescription(this._config.fontName, FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
 			this.boldFontDescription = new FontDescription(this._config.fontName, FontWeight.BOLD, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
 
-			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(36 * this.scale), this._config.lightTextColor);
+			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(this._config.fontSizeHeader * this.scale), this._config.lightTextColor);
 
-			this.darkUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.darkTextColor);
-			this.lightUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.lightTextColor);
-			this.selectedUIElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.selectedTextColor);
-			this.lightUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.disabledTextColor);
-			this.darkUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 24 * this.scale, this._config.darkDisabledTextColor);
+			this.darkUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor);
+			this.lightUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor);
+			this.selectedUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.selectedTextColor);
+			this.lightUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.disabledTextColor);
+			this.darkUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkDisabledTextColor);
 
-			this.largeUIDarkElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, this._config.darkTextColor);
-			this.largeUILightElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, this._config.lightTextColor);
-			this.largeUISelectedElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, this._config.selectedTextColor);
-			this.largeUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, 28 * this.scale, this._config.disabledTextColor);
+			this.largeUIDarkElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.darkTextColor);
+			this.largeUILightElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.lightTextColor);
+			this.largeUISelectedElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.selectedTextColor);
+			this.largeUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.disabledTextColor);
 
-			this.darkElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, this._config.darkTextColor);
-			this.lightElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, this._config.lightTextColor);
-			this.disabledElementFormat = new ElementFormat(this.regularFontDescription, 24 * this.scale, this._config.disabledTextColor);
+			this.darkElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor);
+			this.lightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor);
+			this.disabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.disabledTextColor);
 
-			this.smallLightElementFormat = new ElementFormat(this.regularFontDescription, 18 * this.scale, this._config.lightTextColor);
-			this.smallDisabledElementFormat = new ElementFormat(this.regularFontDescription, 18 * this.scale, this._config.disabledTextColor);
+			this.smallLightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeSmall * this.scale, this._config.lightTextColor);
+			this.smallDisabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeSmall * this.scale, this._config.disabledTextColor);
 
-			this.largeDarkElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, this._config.darkTextColor);
-			this.largeLightElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, this._config.lightTextColor);
-			this.largeDisabledElementFormat = new ElementFormat(this.regularFontDescription, 28 * this.scale, this._config.disabledTextColor);
+			this.largeDarkElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.darkTextColor);
+			this.largeLightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.lightTextColor);
+			this.largeDisabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.disabledTextColor);
 		}
 
 		protected function initializeTextures():void
