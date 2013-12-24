@@ -1,6 +1,5 @@
 package
 {
-	import flash.display.Stage;
 	import flash.geom.Rectangle;
 	
 	import feathers.controls.Button;

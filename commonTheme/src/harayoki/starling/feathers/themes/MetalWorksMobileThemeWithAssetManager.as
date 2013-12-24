@@ -24,8 +24,6 @@
  */
 package harayoki.starling.feathers.themes
 {
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import flash.errors.IllegalOperationError;
 	import flash.geom.Rectangle;
 	import flash.text.TextFormat;
