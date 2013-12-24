@@ -44,6 +44,10 @@ package harayoki.starling.feathers.themes
 				//verbose && trace(key,type,value);
 				switch(type)
 				{
+					
+					case "Boolean":
+						_setupBooleanData(key,value);
+						break;						
 					case "String":
 						_setupStringData(key,value);
 						break;
@@ -75,6 +79,12 @@ package harayoki.starling.feathers.themes
 				}
 			}
 		}
+		
+		protected function _setupBooleanData(key:String,value:Object):void
+		{
+			this[key] = _selectParam(value,this[key]) as Boolean;
+			verbose && trace("Boolean : ",key,"'"+this[key]+"'");
+		}		
 		
 		protected function _setupStringData(key:String,value:Object):void
 		{
