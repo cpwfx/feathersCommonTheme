@@ -7,6 +7,8 @@
 	"fontSizeLarge":18,
 	"fontSizeHeader":36,
     "lightTextColor":"#e5e5e5",
+    
+    "btnPadding":[8,16,8,16],
 	
     "atlasName": "metalworks",
     "_comment_":""

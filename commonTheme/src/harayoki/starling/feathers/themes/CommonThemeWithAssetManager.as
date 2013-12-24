@@ -699,10 +699,10 @@ package harayoki.starling.feathers.themes
 			button.disabledLabelProperties.elementFormat = this.darkUIDisabledElementFormat;
 			button.selectedDisabledLabelProperties.elementFormat = this.darkUIDisabledElementFormat;
 
-			button.paddingTop = this._config.btnPaddingTop * this.scale;
-			button.paddingBottom = this._config.btnPaddingBottom * this.scale;
-			button.paddingLeft = this._config.btnPaddingLeft * this.scale;
-			button.paddingRight = this._config.btnPaddingRight * this.scale;
+			button.paddingTop = this._config.btnPadding.top * this.scale;
+			button.paddingBottom = this._config.btnPadding.bottom * this.scale;
+			button.paddingLeft = this._config.btnPadding.left * this.scale;
+			button.paddingRight = this._config.btnPadding.right * this.scale;
 			button.gap = this._config.btnGap * this.scale;
 			button.minWidth = this._config.btnMinWidth * this.scale;
 			button.minHeight = this._config.btnMinHeight * this.scale;

@@ -47,10 +47,7 @@ package harayoki.starling.feathers.themes
 		public var fontSizeHeader:int = 36;
 		
 		//button
-		public var btnPaddingTop:int = 8;
-		public var btnPaddingBottom:int = 8;
-		public var btnPaddingLeft:int = 16;
-		public var btnPaddingRight:int = 16;
+		public var btnPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,16,8,16);
 		public var btnGap:int = 12;
 		public var btnMinWidth:int = 60;
 		public var btnMinHeight:int = 60;

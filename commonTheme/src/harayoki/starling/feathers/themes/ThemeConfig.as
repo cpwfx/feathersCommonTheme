@@ -60,6 +60,9 @@ package harayoki.starling.feathers.themes
 					case "flash.geom::Rectangle":
 						_setupRectangle(key,value);
 						break;
+					case "PaddingSettingForTheme":
+						_setUpPadding(key,value);
+						break;
 				}
 			}
 		}
@@ -94,7 +97,7 @@ package harayoki.starling.feathers.themes
 			{
 				if(!(value is Array))
 				{
-					throw(new Error("Rectangle setting needs array data."));
+					throw(new Error("Rectangle setting needs array(length:4) data."));
 				}
 				else
 				{
@@ -103,6 +106,23 @@ package harayoki.starling.feathers.themes
 			}
 			this[key] = _selectParam(value,this[key]) as Rectangle;
 			verbose && trace("Rectangle : ",key,this[key]);
+		}
+		
+		protected function _setUpPadding(key:String,value:Object):void
+		{
+			if(value)
+			{
+				if(!(value is Array))
+				{
+					throw(new Error("Padding setting needs array(length:4) data."));
+				}
+				else
+				{
+					value = new PaddingSettingForTheme(value[0],value[1],value[2],value[3]);
+				}
+			}
+			this[key] = _selectParam(value,this[key]) as PaddingSettingForTheme;
+			verbose && trace("PaddingSettingForTheme : ",key,this[key]);
 		}
 		
 		protected function _setupColor(key:String,colorString:String):void
