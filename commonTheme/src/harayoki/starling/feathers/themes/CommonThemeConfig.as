@@ -95,6 +95,12 @@ package harayoki.starling.feathers.themes
 		public var alertBtnGroupPadding:PaddingSettingForTheme = new PaddingSettingForTheme(12,12,12,12);
 		public var alertBtnGroupGap:int = 12;
 		
+		//item renderer
+		public var itemRendererPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,24,8,32);
+		public var itemRendererGap:int = 20;
+		public var itemRendererMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		public var itemRendererMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		
