@@ -1250,9 +1250,9 @@ package harayoki.starling.feathers.themes
 			check.disabledLabelProperties.elementFormat = this.lightUIDisabledElementFormat;
 			check.selectedDisabledLabelProperties.elementFormat = this.lightUIDisabledElementFormat;
 
-			check.gap = 8 * this.scale;
-			check.minTouchWidth = 88 * this.scale;
-			check.minTouchHeight = 88 * this.scale;
+			check.gap = this._config.checkGap * this.scale;
+			check.minTouchWidth = this._config.checkMinTouchSize.width * this.scale;
+			check.minTouchHeight = this._config.checkMinTouchSize.height * this.scale;
 		}
 
 		protected function sliderInitializer(slider:Slider):void

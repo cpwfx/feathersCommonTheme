@@ -140,6 +140,9 @@ package harayoki.starling.feathers.themes
 		public var radioGap:int = 8; 
 		public var radioMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88); 
 		
+		//check
+		public var checkGap:int = 8; 
+		public var checkMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88); 
 		
 		//callout
 		public var calloutStagePadding:int = 16;
