@@ -180,6 +180,12 @@ package harayoki.starling.feathers.themes
 		public var pageIndicatorGap:int = 10;
 		public var pageIndicatorMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(44,44);
 		
+		//header
+		public var headerPadding:PaddingSettingForTheme = new PaddingSettingForTheme(14,14,14,14);
+		public var headerGap:int = 8;
+		public var headerTitleGap:int = 12;
+		public var headerMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
 		public function CommonThemeConfig()
 		{
 			_analyzeVariables(CommonThemeConfig);

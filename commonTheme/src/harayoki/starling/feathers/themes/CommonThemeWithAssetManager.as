@@ -1438,14 +1438,14 @@ package harayoki.starling.feathers.themes
 
 		protected function headerInitializer(header:Header):void
 		{
-			header.minWidth = 88 * this.scale;
-			header.minHeight = 88 * this.scale;
-			header.paddingTop = 14 * this.scale;
-			header.paddingRight = 14 * this.scale;
-			header.paddingBottom = 14 * this.scale;
-			header.paddingLeft = 14 * this.scale;
-			header.gap = 8 * this.scale;
-			header.titleGap = 12 * this.scale;
+			header.minWidth = this._config.headerMinSize.width * this.scale;
+			header.minHeight = this._config.headerMinSize.height * this.scale;
+			header.paddingTop = this._config.headerPadding.top * this.scale;
+			header.paddingRight = this._config.headerPadding.right * this.scale;
+			header.paddingBottom = this._config.headerPadding.bottom * this.scale;
+			header.paddingLeft = this._config.headerPadding.left * this.scale;
+			header.gap = this._config.headerGap * this.scale;
+			header.titleGap = this._config.headerTitleGap * this.scale;
 
 			const backgroundSkin:TiledImage = new TiledImage(this.headerBackgroundSkinTexture, this.scale);
 			backgroundSkin.width = backgroundSkin.height = 88 * this.scale;
