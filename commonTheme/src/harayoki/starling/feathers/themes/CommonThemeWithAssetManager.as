@@ -1614,8 +1614,8 @@ package harayoki.starling.feathers.themes
 
 			const layout:VerticalLayout = new VerticalLayout();
 			layout.useVirtualLayout = true;
-			layout.padding = 18 * this.scale;
-			layout.gap = 0;
+			layout.padding = this._config.insetGroupedListLayoutPadding * this.scale;
+			layout.gap = this._config.insetGroupedListLayoutGap * this.scale;
 			layout.horizontalAlign = VerticalLayout.HORIZONTAL_ALIGN_JUSTIFY;
 			layout.verticalAlign = VerticalLayout.VERTICAL_ALIGN_TOP;
 			layout.manageVisibility = true;
