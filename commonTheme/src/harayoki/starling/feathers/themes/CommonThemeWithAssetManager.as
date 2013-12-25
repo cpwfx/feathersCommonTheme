@@ -1561,13 +1561,13 @@ package harayoki.starling.feathers.themes
 			const backgroundSkin:Scale9Image = new Scale9Image(this.backgroundPopUpSkinTextures, this.scale);
 			alert.backgroundSkin = backgroundSkin;
 
-			alert.paddingTop = 0;
-			alert.paddingRight = 24 * this.scale;
-			alert.paddingBottom = 16 * this.scale;
-			alert.paddingLeft = 24 * this.scale;
-			alert.gap = 16 * this.scale;
-			alert.maxWidth = 560 * this.scale;
-			alert.maxHeight = 560 * this.scale;
+			alert.paddingTop = this._config.alertPadding.top * this.scale;
+			alert.paddingRight = this._config.alertPadding.right * this.scale;
+			alert.paddingBottom = this._config.alertPadding.bottom * this.scale;
+			alert.paddingLeft = this._config.alertPadding.left * this.scale;
+			alert.gap = this._config.alertGap * this.scale;
+			alert.maxWidth = this._config.alertMinSize.width * this.scale;
+			alert.maxHeight = this._config.alertMinSize.height * this.scale;
 		}
 
 		protected function listInitializer(list:List):void

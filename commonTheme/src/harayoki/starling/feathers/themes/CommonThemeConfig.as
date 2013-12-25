@@ -196,6 +196,12 @@ package harayoki.starling.feathers.themes
 		//panel
 		public var panelPadding:PaddingSettingForTheme = new PaddingSettingForTheme(0,8,8,8);
 		
+		//alert
+		public var alertPadding:PaddingSettingForTheme = new PaddingSettingForTheme(0,24,16,24);
+		public var alertGap:int = 16;
+		public var alertMinSize:SizeSettingForTheme = new SizeSettingForTheme(560,560);
+		
+		
 		public function CommonThemeConfig()
 		{
 			_analyzeVariables(CommonThemeConfig);
