@@ -984,11 +984,11 @@ package harayoki.starling.feathers.themes
 			group.horizontalAlign = ButtonGroup.HORIZONTAL_ALIGN_CENTER;
 			group.verticalAlign = ButtonGroup.VERTICAL_ALIGN_JUSTIFY;
 			group.distributeButtonSizes = false;
-			group.gap = 12 * this.scale;
-			group.paddingTop = 12 * this.scale;
-			group.paddingRight = 12 * this.scale;
-			group.paddingBottom = 12 * this.scale;
-			group.paddingLeft = 12 * this.scale;
+			group.gap = this._config.alertBtnGroupGap * this.scale;
+			group.paddingTop = this._config.alertBtnGroupPadding.top * this.scale;
+			group.paddingRight = this._config.alertBtnGroupPadding.right * this.scale;
+			group.paddingBottom = this._config.alertBtnGroupPadding.bottom * this.scale;
+			group.paddingLeft = this._config.alertBtnGroupPadding.left * this.scale;
 			group.customButtonName = COMPONENT_NAME_ALERT_BUTTON_GROUP_BUTTON;
 		}
 

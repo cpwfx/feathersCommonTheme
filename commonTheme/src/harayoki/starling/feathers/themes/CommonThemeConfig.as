@@ -91,6 +91,10 @@ package harayoki.starling.feathers.themes
 		public var btnGroupGap:int = 18;
 		public var btnGroupMinSize:SizeSettingForTheme = new SizeSettingForTheme(560,0);//heightは無視されます
 		
+		//alert button group
+		public var alertBtnGroupPadding:PaddingSettingForTheme = new PaddingSettingForTheme(12,12,12,12);
+		public var alertBtnGroupGap:int = 12;
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		
