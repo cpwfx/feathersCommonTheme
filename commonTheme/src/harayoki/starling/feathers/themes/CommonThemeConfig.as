@@ -56,6 +56,10 @@ package harayoki.starling.feathers.themes
 		public var btnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
 		public var btnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//simple button
+		public var simpleBtnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
+		public var simpleBtnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		

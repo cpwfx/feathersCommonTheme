@@ -691,8 +691,10 @@ package harayoki.starling.feathers.themes
 			};
 			button.stateToSkinFunction = skinSelector.updateValue;
 
-			button.minWidth = button.minHeight = 60 * this.scale;
-			button.minTouchWidth = button.minTouchHeight = 88 * this.scale;
+			button.minWidth = this._config.simpleBtnMinSize.width + this.scale;
+			button.minHeight = this._config.simpleBtnMinSize.height * this.scale;
+			button.minTouchWidth = this._config.simpleBtnMinTouchSize.width * this.scale;
+			button.minTouchHeight = this._config.simpleBtnMinTouchSize.height * this.scale;
 		}
 
 		protected function labelInitializer(label:Label):void
