@@ -891,11 +891,15 @@ package harayoki.starling.feathers.themes
 			button.disabledLabelProperties.elementFormat = this.largeUIDisabledElementFormat;
 			button.selectedDisabledLabelProperties.elementFormat = this.largeUIDisabledElementFormat;
 
-			button.paddingTop = button.paddingBottom = 8 * this.scale;
-			button.paddingLeft = button.paddingRight = 16 * this.scale;
-			button.gap = 12 * this.scale;
-			button.minWidth = button.minHeight = 76 * this.scale;
-			button.minTouchWidth = button.minTouchHeight = 88 * this.scale;
+			button.paddingTop = this._config.btnGroupBtnPadding.top * this.scale;
+			button.paddingRight = this._config.btnGroupBtnPadding.right * this.scale;
+			button.paddingBottom = this._config.btnGroupBtnPadding.bottom * this.scale;
+			button.paddingLeft = this._config.btnGroupBtnPadding.left * this.scale;
+			button.gap = this._config.btnGroupBtnGap * this.scale;
+			button.minWidth =  this._config.btnGroupBtnMinSize.width * this.scale;
+			button.minHeight = this._config.btnGroupBtnMinSize.height * this.scale;
+			button.minTouchWidth = this._config.btnGroupBtnMinTouchSize.width * this.scale;
+			button.minTouchHeight = this._config.btnGroupBtnMinTouchSize.height * this.scale;
 		}
 
 		protected function alertButtonGroupButtonInitializer(button:Button):void
