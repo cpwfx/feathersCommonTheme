@@ -1054,15 +1054,18 @@ package harayoki.starling.feathers.themes
 
 			renderer.itemHasIcon = false;
 			renderer.horizontalAlign = Button.HORIZONTAL_ALIGN_LEFT;
-			renderer.paddingTop = renderer.paddingBottom = 8 * this.scale;
-			renderer.paddingLeft = 32 * this.scale;
-			renderer.paddingRight = 24 * this.scale;
+			renderer.paddingTop = this._config.itemRendererPadding.top * this.scale;
+			renderer.paddingRight = this._config.itemRendererPadding.right * this.scale;
+			renderer.paddingBottom = this._config.itemRendererPadding.bottom * this.scale;
+			renderer.paddingLeft = this._config.itemRendererPadding.left * this.scale;
 			renderer.gap = Number.POSITIVE_INFINITY;
 			renderer.iconPosition = Button.ICON_POSITION_RIGHT;
 			renderer.accessoryGap = Number.POSITIVE_INFINITY;
 			renderer.accessoryPosition = BaseDefaultItemRenderer.ACCESSORY_POSITION_RIGHT;
-			renderer.minWidth = renderer.minHeight = 88 * this.scale;
-			renderer.minTouchWidth = renderer.minTouchHeight = 88 * this.scale;
+			renderer.minWidth = this._config.pickerListItemRendererMinSize.width * this.scale;
+			renderer.minHeight = this._config.pickerListItemRendererMinSize.height * this.scale;
+			renderer.minTouchWidth = this._config.pickerListItemRendererMinSize.width * this.scale;
+			renderer.minTouchHeight = this._config.pickerListItemRendererMinSize.height * this.scale;
 		}
 
 		protected function insetItemRendererInitializer(renderer:DefaultGroupedListItemRenderer, defaultSkinTextures:Scale9Textures, selectedAndDownSkinTextures:Scale9Textures):void

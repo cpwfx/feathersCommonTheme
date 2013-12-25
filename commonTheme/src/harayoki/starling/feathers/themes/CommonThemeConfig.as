@@ -101,6 +101,12 @@ package harayoki.starling.feathers.themes
 		public var itemRendererMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		public var itemRendererMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//pickerList item renderer
+		public var pickerListItemRendererPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,24,8,32);
+		//public var pickerListItemRendererGap:Number = Number.POSITIVE_INFINITY;//TODO JSONでどう表現？ とりあえず省く
+		public var pickerListItemRendererMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		public var pickerListItemRendererMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		
