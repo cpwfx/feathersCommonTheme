@@ -136,6 +136,11 @@ package harayoki.starling.feathers.themes
 		public var insetFooterRendererMinSize:SizeSettingForTheme = new SizeSettingForTheme(66,66);
 		public var insetFooterRendererMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(44,44);
 		
+		//radio
+		public var radioGap:int = 8; 
+		public var radioMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88); 
+		
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		

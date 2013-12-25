@@ -1224,9 +1224,10 @@ package harayoki.starling.feathers.themes
 			radio.disabledLabelProperties.elementFormat = this.lightUIDisabledElementFormat;
 			radio.selectedDisabledLabelProperties.elementFormat = this.lightUIDisabledElementFormat;
 
-			radio.gap = 8 * this.scale;
-			radio.minTouchWidth = 88 * this.scale;
-			radio.minTouchHeight = 88 * this.scale;
+			radio.gap = this._config.radioGap * this.scale;
+			radio.minTouchWidth = this._config.radioMinTouchSize.width * this.scale;
+			radio.minTouchHeight = this._config.radioMinTouchSize.height * this.scale;
+			
 		}
 
 		protected function checkInitializer(check:Check):void
