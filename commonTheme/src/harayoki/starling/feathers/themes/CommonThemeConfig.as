@@ -75,6 +75,13 @@ package harayoki.starling.feathers.themes
 		//alert button
 		public var alertBtnMinSize:SizeSettingForTheme = new SizeSettingForTheme(120,60);
 		
+		//tab
+		public var tabPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,16,8,16);
+		public var tabGap:int = 12;
+		public var tabMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		public var tabMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		

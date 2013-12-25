@@ -955,11 +955,15 @@ package harayoki.starling.feathers.themes
 			tab.disabledLabelProperties.elementFormat = this.darkUIDisabledElementFormat;
 			tab.selectedDisabledLabelProperties.elementFormat = this.darkUIDisabledElementFormat;
 
-			tab.paddingTop = tab.paddingBottom = 8 * this.scale;
-			tab.paddingLeft = tab.paddingRight = 16 * this.scale;
-			tab.gap = 12 * this.scale;
-			tab.minWidth = tab.minHeight = 88 * this.scale;
-			tab.minTouchWidth = tab.minTouchHeight = 88 * this.scale;
+			tab.paddingTop = this._config.tabPadding.top * this.scale;
+			tab.paddingRight = this._config.tabPadding.right * this.scale;
+			tab.paddingBottom = this._config.tabPadding.bottom * this.scale;
+			tab.paddingLeft = this._config.tabPadding.left * this.scale;
+			tab.gap = this._config.tabGap * this.scale;
+			tab.minWidth = this._config.tabMinSize.width * this.scale;
+			tab.minHeight = this._config.tabMinSize.height * this.scale;
+			tab.minTouchWidth = this._config.tabMinTouchSize.width * this.scale;
+			tab.minTouchHeight = this._config.tabMinTouchSize.height * this.scale;
 		}
 
 		protected function buttonGroupInitializer(group:ButtonGroup):void
