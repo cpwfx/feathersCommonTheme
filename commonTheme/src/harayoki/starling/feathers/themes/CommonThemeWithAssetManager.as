@@ -1302,9 +1302,10 @@ package harayoki.starling.feathers.themes
 			const defaultSkin:Scale3Image = new Scale3Image(this.horizontalScrollBarThumbSkinTextures, this.scale);
 			defaultSkin.width = 10 * this.scale;
 			scrollBar.thumbProperties.defaultSkin = defaultSkin;
-			scrollBar.paddingRight = 4 * this.scale;
-			scrollBar.paddingBottom = 4 * this.scale;
-			scrollBar.paddingLeft = 4 * this.scale;
+			//hScrollbarPadding.topは使わない
+			scrollBar.paddingRight = this._config.hScrollbarPadding.right * this.scale;
+			scrollBar.paddingBottom = this._config.hScrollbarPadding.bottom * this.scale;
+			scrollBar.paddingLeft = this._config.hScrollbarPadding.left * this.scale;
 		}
 
 		protected function verticalScrollBarInitializer(scrollBar:SimpleScrollBar):void
@@ -1313,9 +1314,10 @@ package harayoki.starling.feathers.themes
 			const defaultSkin:Scale3Image = new Scale3Image(this.verticalScrollBarThumbSkinTextures, this.scale);
 			defaultSkin.height = 10 * this.scale;
 			scrollBar.thumbProperties.defaultSkin = defaultSkin;
-			scrollBar.paddingTop = 4 * this.scale;
-			scrollBar.paddingRight = 4 * this.scale;
-			scrollBar.paddingBottom = 4 * this.scale;
+			//hScrollbarPadding.leftは使わない
+			scrollBar.paddingTop = this._config.vScrollbarPadding.top * this.scale;
+			scrollBar.paddingRight = this._config.vScrollbarPadding.right * this.scale;
+			scrollBar.paddingBottom = this._config.vScrollbarPadding.bottom * this.scale;
 		}
 
 		protected function baseTextInputInitializer(input:TextInput):void

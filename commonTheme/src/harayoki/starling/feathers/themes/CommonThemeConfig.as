@@ -153,7 +153,13 @@ package harayoki.starling.feathers.themes
 		//numeric stepper
 		public var numericStepperIncrementLabel:String = "+";
 		public var numericStepperDecrementLabel:String = "-";
-				
+		
+		//horizontal scrollbar
+		public var hScrollbarPadding:PaddingSettingForTheme = new PaddingSettingForTheme(-1,4,4,4);//topは無視される
+		
+		//vertical scrollbar
+		public var vScrollbarPadding:PaddingSettingForTheme = new PaddingSettingForTheme(4,4,4,-1);//leftは無視される
+		
 		//textinput
 		public var textInputFontSize:int = 24; 
 		public var textInputFontFamily:String = "_sans";//オリジナルはHelvetica 
