@@ -1087,15 +1087,18 @@ package harayoki.starling.feathers.themes
 			renderer.defaultSelectedLabelProperties.elementFormat = this.largeDarkElementFormat;
 
 			renderer.horizontalAlign = Button.HORIZONTAL_ALIGN_LEFT;
-			renderer.paddingTop = renderer.paddingBottom = 8 * this.scale;
-			renderer.paddingLeft = 32 * this.scale;
-			renderer.paddingRight = 24 * this.scale;
-			renderer.gap = 20 * this.scale;
+			renderer.paddingTop = this._config.insetItemRendererPadding.top * this.scale;
+			renderer.paddingRight = this._config.insetItemRendererPadding.right * this.scale;
+			renderer.paddingBottom = this._config.insetItemRendererPadding.bottom * this.scale;
+			renderer.paddingLeft = this._config.insetItemRendererPadding.left * this.scale;
+			renderer.gap = this._config.insetItemRendererGap * this.scale;
 			renderer.iconPosition = Button.ICON_POSITION_LEFT;
 			renderer.accessoryGap = Number.POSITIVE_INFINITY;
 			renderer.accessoryPosition = BaseDefaultItemRenderer.ACCESSORY_POSITION_RIGHT;
-			renderer.minWidth = renderer.minHeight = 88 * this.scale;
-			renderer.minTouchWidth = renderer.minTouchHeight = 88 * this.scale;
+			renderer.minWidth = this._config.insetItemRendererMinSize.width * this.scale;
+			renderer.minHeight = this._config.insetItemRendererMinSize.height * this.scale;
+			renderer.minTouchWidth = this._config.insetItemRendererMinTouchSize.width * this.scale;
+			renderer.minTouchHeight = this._config.insetItemRendererMinTouchSize.height * this.scale;
 
 			renderer.accessoryLoaderFactory = this.imageLoaderFactory;
 			renderer.iconLoaderFactory = this.imageLoaderFactory;

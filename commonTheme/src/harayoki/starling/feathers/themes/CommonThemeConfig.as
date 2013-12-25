@@ -107,6 +107,12 @@ package harayoki.starling.feathers.themes
 		public var pickerListItemRendererMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		public var pickerListItemRendererMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//inset item Renderer
+		public var insetItemRendererPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,24,8,32);
+		public var insetItemRendererGap:int = 20;
+		public var insetItemRendererMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		public var insetItemRendererMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		
