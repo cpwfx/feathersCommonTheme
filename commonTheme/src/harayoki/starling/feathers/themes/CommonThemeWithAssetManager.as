@@ -1404,13 +1404,13 @@ package harayoki.starling.feathers.themes
 		{
 			pageIndicator.normalSymbolFactory = this.pageIndicatorNormalSymbolFactory;
 			pageIndicator.selectedSymbolFactory = this.pageIndicatorSelectedSymbolFactory;
-			pageIndicator.gap = 10 * this.scale;
-			pageIndicator.paddingTop = 6 * this.scale;
-			pageIndicator.paddingRight = 6 * this.scale;
-			pageIndicator.paddingBottom = 6 * this.scale;
-			pageIndicator.paddingLeft = 6 * this.scale;
-			pageIndicator.minTouchWidth = 44 * this.scale;
-			pageIndicator.minTouchHeight = 44 * this.scale;
+			pageIndicator.gap = this._config.pageIndicatorGap * this.scale;
+			pageIndicator.paddingTop = this._config.pageIndicatorPadding.top * this.scale;
+			pageIndicator.paddingRight = this._config.pageIndicatorPadding.right * this.scale;
+			pageIndicator.paddingBottom = this._config.pageIndicatorPadding.bottom * this.scale;
+			pageIndicator.paddingLeft = this._config.pageIndicatorPadding.left * this.scale;
+			pageIndicator.minTouchWidth = this._config.pageIndicatorMinTouchSize.width * this.scale;
+			pageIndicator.minTouchHeight = this._config.pageIndicatorMinTouchSize.height * this.scale;
 		}
 
 		protected function progressBarInitializer(progress:ProgressBar):void

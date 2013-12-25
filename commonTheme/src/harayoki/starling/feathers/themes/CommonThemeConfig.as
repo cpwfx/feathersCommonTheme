@@ -175,6 +175,10 @@ package harayoki.starling.feathers.themes
 		public var numericStepperTextInputMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
 		public var numericStepperTextInputMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//page indicator
+		public var pageIndicatorPadding:PaddingSettingForTheme = new PaddingSettingForTheme(6,6,6,6);
+		public var pageIndicatorGap:int = 10;
+		public var pageIndicatorMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(44,44);
 		
 		public function CommonThemeConfig()
 		{
