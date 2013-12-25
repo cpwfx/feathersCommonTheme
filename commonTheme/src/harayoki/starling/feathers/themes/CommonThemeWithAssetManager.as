@@ -1587,15 +1587,15 @@ package harayoki.starling.feathers.themes
 			if(!container.layout)
 			{
 				const layout:HorizontalLayout = new HorizontalLayout();
-				layout.paddingTop = 14 * this.scale;
-				layout.paddingRight = 14 * this.scale;
-				layout.paddingBottom = 14 * this.scale;
-				layout.paddingLeft = 14 * this.scale;
-				layout.gap = 8 * this.scale;
+				layout.paddingTop = this._config.scrollContainerToolbarLayoutPadding.top * this.scale;
+				layout.paddingRight = this._config.scrollContainerToolbarLayoutPadding.right * this.scale;
+				layout.paddingBottom = this._config.scrollContainerToolbarLayoutPadding.bottom * this.scale;
+				layout.paddingLeft = this._config.scrollContainerToolbarLayoutPadding.left * this.scale;
+				layout.gap = this._config.scrollContainerToolbarLayoutGap * this.scale;
 				container.layout = layout;
 			}
-			container.minWidth = 88 * this.scale;
-			container.minHeight = 88 * this.scale;
+			container.minWidth = this._config.scrollContainerToolbarMinSize.width * this.scale;
+			container.minHeight = this._config.scrollContainerToolbarMinSize.height * this.scale;
 
 			const backgroundSkin:TiledImage = new TiledImage(this.headerBackgroundSkinTexture, this.scale);
 			backgroundSkin.width = 88 * this.scale;

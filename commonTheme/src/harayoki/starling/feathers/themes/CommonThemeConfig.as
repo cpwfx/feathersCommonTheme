@@ -201,6 +201,11 @@ package harayoki.starling.feathers.themes
 		public var alertGap:int = 16;
 		public var alertMinSize:SizeSettingForTheme = new SizeSettingForTheme(560,560);
 		
+		//scroll container toolbar
+		public var scrollContainerToolbarLayoutGap:int = 8;
+		public var scrollContainerToolbarLayoutPadding:PaddingSettingForTheme = new PaddingSettingForTheme(14,14,14,14);
+		public var scrollContainerToolbarMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
 		//inset grouped list layout
 		public var insetGroupedListLayoutPadding:int = 18;
 		public var insetGroupedListLayoutGap:int = 0;
