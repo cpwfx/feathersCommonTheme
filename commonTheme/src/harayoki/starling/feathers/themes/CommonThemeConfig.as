@@ -128,6 +128,11 @@ package harayoki.starling.feathers.themes
 		public var insetHeaderRendererMinSize:SizeSettingForTheme = new SizeSettingForTheme(66,66);
 		public var insetHeaderRendererMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(44,44);
 				
+		//inset footer renderer
+		public var insetFooterRendererPadding:PaddingSettingForTheme = new PaddingSettingForTheme(4,32,4,32);
+		public var insetFooterRendererMinSize:SizeSettingForTheme = new SizeSettingForTheme(66,66);
+		public var insetFooterRendererMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(44,44);
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		

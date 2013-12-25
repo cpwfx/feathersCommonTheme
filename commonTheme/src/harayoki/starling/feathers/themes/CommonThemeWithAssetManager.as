@@ -1190,10 +1190,14 @@ package harayoki.starling.feathers.themes
 
 			renderer.horizontalAlign = DefaultGroupedListHeaderOrFooterRenderer.HORIZONTAL_ALIGN_CENTER;
 			renderer.contentLabelProperties.elementFormat = this.lightElementFormat;
-			renderer.paddingTop = renderer.paddingBottom = 4 * this.scale;
-			renderer.paddingLeft = renderer.paddingRight = 32 * this.scale;
-			renderer.minWidth = renderer.minHeight = 66 * this.scale;
-			renderer.minTouchWidth = renderer.minTouchHeight = 44 * this.scale;
+			renderer.paddingTop = this._config.insetFooterRendererPadding.top * this.scale;
+			renderer.paddingRight = this._config.insetFooterRendererPadding.right * this.scale;
+			renderer.paddingBottom = this._config.insetFooterRendererPadding.bottom * this.scale;
+			renderer.paddingLeft = this._config.insetFooterRendererPadding.left * this.scale;
+			renderer.minWidth = this._config.insetFooterRendererMinSize.width * this.scale;
+			renderer.minHeight = this._config.insetFooterRendererMinSize.height * this.scale;
+			renderer.minTouchWidth = this._config.insetFooterRendererMinTouchSize.width * this.scale;
+			renderer.minTouchHeight = this._config.insetFooterRendererMinTouchSize.height * this.scale;
 
 			renderer.contentLoaderFactory = this.imageLoaderFactory;
 		}
@@ -1219,7 +1223,8 @@ package harayoki.starling.feathers.themes
 			radio.selectedDisabledLabelProperties.elementFormat = this.lightUIDisabledElementFormat;
 
 			radio.gap = 8 * this.scale;
-			radio.minTouchWidth = radio.minTouchHeight = 88 * this.scale;
+			radio.minTouchWidth = 88 * this.scale;
+			radio.minTouchHeight = 88 * this.scale;
 		}
 
 		protected function checkInitializer(check:Check):void
@@ -1243,7 +1248,8 @@ package harayoki.starling.feathers.themes
 			check.selectedDisabledLabelProperties.elementFormat = this.lightUIDisabledElementFormat;
 
 			check.gap = 8 * this.scale;
-			check.minTouchWidth = check.minTouchHeight = 88 * this.scale;
+			check.minTouchWidth = 88 * this.scale;
+			check.minTouchHeight = 88 * this.scale;
 		}
 
 		protected function sliderInitializer(slider:Slider):void
