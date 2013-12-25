@@ -804,11 +804,15 @@ package harayoki.starling.feathers.themes
 			button.defaultSelectedLabelProperties.elementFormat = this.darkUIElementFormat;
 			button.selectedDisabledLabelProperties.elementFormat = this.darkUIDisabledElementFormat;
 
-			button.paddingTop = button.paddingBottom = 8 * this.scale;
-			button.paddingLeft = button.paddingRight = 16 * this.scale;
-			button.gap = 12 * this.scale;
-			button.minWidth = button.minHeight = 60 * this.scale;
-			button.minTouchWidth = button.minTouchHeight = 88 * this.scale;
+			button.paddingTop = this._config.quietBtnPadding.top * this.scale;
+			button.paddingRight = this._config.quietBtnPadding.right * this.scale;
+			button.paddingBottom = this._config.quietBtnPadding.bottom * this.scale;
+			button.paddingLeft = this._config.quietBtnPadding.left * this.scale;
+			button.gap = this._config.quietBtnGap * this.scale;
+			button.minWidth = this._config.quietBtnMinSize.width * this.scale;
+			button.minHeight = this._config.quietBtnMinSize.height * this.scale;
+			button.minTouchWidth = this._config.quietBtnMinTouchSize.width * this.scale;
+			button.minTouchHeight = this._config.quietBtnMinTouchSize.height * this.scale;
 		}
 
 		protected function dangerButtonInitializer(button:Button):void

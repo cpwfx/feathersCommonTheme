@@ -50,15 +50,21 @@ package harayoki.starling.feathers.themes
 		public var fontSizeLarge:int = 18;
 		public var fontSizeHeader:int = 36;
 		
-		//button
+		//simple button
+		public var simpleBtnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
+		public var simpleBtnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
+		//base button		
 		public var btnPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,16,8,16);
 		public var btnGap:int = 12;
 		public var btnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
 		public var btnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
-		//simple button
-		public var simpleBtnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
-		public var simpleBtnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		//quiet button
+		public var quietBtnPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,16,8,16);
+		public var quietBtnGap:int = 12;
+		public var quietBtnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
+		public var quietBtnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
 		//callout
 		public var calloutStagePadding:int = 16;
