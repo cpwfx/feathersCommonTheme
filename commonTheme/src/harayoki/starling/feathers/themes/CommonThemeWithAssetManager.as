@@ -1455,12 +1455,12 @@ package harayoki.starling.feathers.themes
 
 		protected function headerWithoutBackgroundInitializer(header:Header):void
 		{
-			header.minWidth = 88 * this.scale;
-			header.minHeight = 88 * this.scale;
-			header.paddingTop = 14 * this.scale;
-			header.paddingBottom = 14 * this.scale;
-			header.paddingLeft = 18 * this.scale;
-			header.paddingRight = 18 * this.scale;
+			header.minWidth = this._config.headerWithoutBackgroundMinSize.width * this.scale;
+			header.minHeight = this._config.headerWithoutBackgroundMinSize.height * this.scale;
+			header.paddingTop = this._config.headerWithoutBackgroundPadding.top * this.scale;
+			header.paddingRight = this._config.headerWithoutBackgroundPadding.right * this.scale;
+			header.paddingBottom = this._config.headerWithoutBackgroundPadding.bottom * this.scale;
+			header.paddingLeft = this._config.headerWithoutBackgroundPadding.left * this.scale;
 
 			header.titleProperties.elementFormat = this.headerElementFormat;
 		}
