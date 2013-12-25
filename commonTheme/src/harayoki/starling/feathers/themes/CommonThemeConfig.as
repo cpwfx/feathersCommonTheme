@@ -193,6 +193,9 @@ package harayoki.starling.feathers.themes
 		//callout
 		public var calloutPadding:PaddingSettingForTheme = new PaddingSettingForTheme(12,14,12,14);
 		
+		//panel
+		public var panelPadding:PaddingSettingForTheme = new PaddingSettingForTheme(0,8,8,8);
+		
 		public function CommonThemeConfig()
 		{
 			_analyzeVariables(CommonThemeConfig);

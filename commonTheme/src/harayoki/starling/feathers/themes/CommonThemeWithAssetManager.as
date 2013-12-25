@@ -1550,10 +1550,10 @@ package harayoki.starling.feathers.themes
 			const backgroundSkin:Scale9Image = new Scale9Image(this.backgroundPopUpSkinTextures, this.scale);
 			panel.backgroundSkin = backgroundSkin;
 
-			panel.paddingTop = 0;
-			panel.paddingRight = 8 * this.scale;
-			panel.paddingBottom = 8 * this.scale;
-			panel.paddingLeft = 8 * this.scale;
+			panel.paddingTop = this._config.panelPadding.top * this.scale;
+			panel.paddingRight = this._config.panelPadding.right * this.scale;
+			panel.paddingBottom = this._config.panelPadding.bottom * this.scale;
+			panel.paddingLeft = this._config.panelPadding.left * this.scale;
 		}
 
 		protected function alertInitializer(alert:Alert):void
