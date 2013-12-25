@@ -1156,8 +1156,8 @@ package harayoki.starling.feathers.themes
 			renderer.paddingLeft = this._config.footerRendererPadding.left * this.scale;
 			renderer.minWidth = this._config.footerRendererMinSize.width * this.scale;
 			renderer.minHeight = this._config.footerRendererMinSize.height * this.scale;
-			renderer.minTouchWidth = this._config.headerRendererMinTouchSize.width * this.scale;
-			renderer.minTouchHeight = this._config.headerRendererMinTouchSize.height * this.scale;
+			renderer.minTouchWidth = this._config.footerRendererMinTouchSize.width * this.scale;
+			renderer.minTouchHeight = this._config.footerRendererMinTouchSize.height * this.scale;
 
 			renderer.contentLoaderFactory = this.imageLoaderFactory;
 		}
@@ -1366,12 +1366,15 @@ package harayoki.starling.feathers.themes
 			backgroundFocusedSkin.height = 60 * this.scale;
 			input.backgroundFocusedSkin = backgroundFocusedSkin;
 
-			input.minWidth = input.minHeight = 60 * this.scale;
-			input.minTouchWidth = input.minTouchHeight = 88 * this.scale;
+			input.minWidth = 60 * this.scale;
+			input.minHeight = 60 * this.scale;
+			input.minTouchWidth = 88 * this.scale;
+			input.minTouchHeight = 88 * this.scale;
 			input.gap = 12 * this.scale;
 			input.paddingTop = 12 * this.scale;
+			input.paddingRight = 14 * this.scale;
 			input.paddingBottom = 10 * this.scale;
-			input.paddingLeft = input.paddingRight = 14 * this.scale;
+			input.paddingLeft = 14 * this.scale;
 			input.isEditable = false;
 			input.textEditorFactory = stepperTextEditorFactory;
 			input.textEditorProperties.textFormat = this.lightUICenteredTextFormat;
@@ -1383,9 +1386,12 @@ package harayoki.starling.feathers.themes
 			pageIndicator.normalSymbolFactory = this.pageIndicatorNormalSymbolFactory;
 			pageIndicator.selectedSymbolFactory = this.pageIndicatorSelectedSymbolFactory;
 			pageIndicator.gap = 10 * this.scale;
-			pageIndicator.paddingTop = pageIndicator.paddingRight = pageIndicator.paddingBottom =
-				pageIndicator.paddingLeft = 6 * this.scale;
-			pageIndicator.minTouchWidth = pageIndicator.minTouchHeight = 44 * this.scale;
+			pageIndicator.paddingTop = 6 * this.scale;
+			pageIndicator.paddingRight = 6 * this.scale;
+			pageIndicator.paddingBottom = 6 * this.scale;
+			pageIndicator.paddingLeft = 6 * this.scale;
+			pageIndicator.minTouchWidth = 44 * this.scale;
+			pageIndicator.minTouchHeight = 44 * this.scale;
 		}
 
 		protected function progressBarInitializer(progress:ProgressBar):void
@@ -1415,8 +1421,10 @@ package harayoki.starling.feathers.themes
 		{
 			header.minWidth = 88 * this.scale;
 			header.minHeight = 88 * this.scale;
-			header.paddingTop = header.paddingRight = header.paddingBottom =
-				header.paddingLeft = 14 * this.scale;
+			header.paddingTop = 14 * this.scale;
+			header.paddingRight = 14 * this.scale;
+			header.paddingBottom = 14 * this.scale;
+			header.paddingLeft = 14 * this.scale;
 			header.gap = 8 * this.scale;
 			header.titleGap = 12 * this.scale;
 
@@ -1430,8 +1438,10 @@ package harayoki.starling.feathers.themes
 		{
 			header.minWidth = 88 * this.scale;
 			header.minHeight = 88 * this.scale;
-			header.paddingTop = header.paddingBottom = 14 * this.scale;
-			header.paddingLeft = header.paddingRight = 18 * this.scale;
+			header.paddingTop = 14 * this.scale;
+			header.paddingBottom = 14 * this.scale;
+			header.paddingLeft = 18 * this.scale;
+			header.paddingRight = 18 * this.scale;
 
 			header.titleProperties.elementFormat = this.headerElementFormat;
 		}
@@ -1445,8 +1455,10 @@ package harayoki.starling.feathers.themes
 			else
 			{
 				const centerStage:VerticalCenteredPopUpContentManager = new VerticalCenteredPopUpContentManager();
-				centerStage.marginTop = centerStage.marginRight = centerStage.marginBottom =
-					centerStage.marginLeft = 24 * this.scale;
+				centerStage.marginTop = 24 * this.scale;
+				centerStage.marginRight = 24 * this.scale;
+				centerStage.marginBottom = 24 * this.scale;
+				centerStage.marginLeft = 24 * this.scale;
 				list.popUpContentManager = centerStage;
 			}
 
@@ -1455,8 +1467,10 @@ package harayoki.starling.feathers.themes
 			layout.horizontalAlign = VerticalLayout.HORIZONTAL_ALIGN_JUSTIFY;
 			layout.useVirtualLayout = true;
 			layout.gap = 0;
-			layout.paddingTop = layout.paddingRight = layout.paddingBottom =
-				layout.paddingLeft = 0;
+			layout.paddingTop = 0;
+			layout.paddingRight = 0;
+			layout.paddingBottom = 0;
+			layout.paddingLeft = 0;
 			list.listProperties.layout = layout;
 			list.listProperties.verticalScrollPolicy = List.SCROLL_POLICY_ON;
 
@@ -1471,8 +1485,10 @@ package harayoki.starling.feathers.themes
 				backgroundSkin.width = 20 * this.scale;
 				backgroundSkin.height = 20 * this.scale;
 				list.listProperties.backgroundSkin = backgroundSkin;
-				list.listProperties.paddingTop = list.listProperties.paddingRight =
-					list.listProperties.paddingBottom = list.listProperties.paddingLeft = 8 * this.scale;
+				list.listProperties.paddingTop = 8 * this.scale;
+				list.listProperties.paddingRight = 8 * this.scale;
+				list.listProperties.paddingBottom  = 8 * this.scale;
+				list.listProperties.paddingLeft = 8 * this.scale;
 			}
 
 			list.listProperties.itemRendererName = COMPONENT_NAME_PICKER_LIST_ITEM_RENDERER;
@@ -1502,8 +1518,10 @@ package harayoki.starling.feathers.themes
 			leftArrowSkin.scaleX = leftArrowSkin.scaleY = this.scale;
 			callout.leftArrowSkin = leftArrowSkin;
 
-			callout.paddingTop = callout.paddingBottom = 12 * this.scale;
-			callout.paddingLeft = callout.paddingRight = 14 * this.scale;
+			callout.paddingTop = 12 * this.scale;
+			callout.paddingRight = 14 * this.scale;
+			callout.paddingBottom = 12 * this.scale;
+			callout.paddingLeft = 14 * this.scale;
 		}
 
 		protected function panelInitializer(panel:Panel):void
@@ -1527,7 +1545,8 @@ package harayoki.starling.feathers.themes
 			alert.paddingBottom = 16 * this.scale;
 			alert.paddingLeft = 24 * this.scale;
 			alert.gap = 16 * this.scale;
-			alert.maxWidth = alert.maxHeight = 560 * this.scale;
+			alert.maxWidth = 560 * this.scale;
+			alert.maxHeight = 560 * this.scale;
 		}
 
 		protected function listInitializer(list:List):void
@@ -1547,8 +1566,10 @@ package harayoki.starling.feathers.themes
 			if(!container.layout)
 			{
 				const layout:HorizontalLayout = new HorizontalLayout();
-				layout.paddingTop = layout.paddingRight = layout.paddingBottom =
-					layout.paddingLeft = 14 * this.scale;
+				layout.paddingTop = 14 * this.scale;
+				layout.paddingRight = 14 * this.scale;
+				layout.paddingBottom = 14 * this.scale;
+				layout.paddingLeft = 14 * this.scale;
 				layout.gap = 8 * this.scale;
 				container.layout = layout;
 			}
@@ -1556,7 +1577,8 @@ package harayoki.starling.feathers.themes
 			container.minHeight = 88 * this.scale;
 
 			const backgroundSkin:TiledImage = new TiledImage(this.headerBackgroundSkinTexture, this.scale);
-			backgroundSkin.width = backgroundSkin.height = 88 * this.scale;
+			backgroundSkin.width = 88 * this.scale;
+			backgroundSkin.height = 88 * this.scale;
 			container.backgroundSkin = backgroundSkin;
 		}
 
