@@ -66,6 +66,12 @@ package harayoki.starling.feathers.themes
 		public var quietBtnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
 		public var quietBtnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//back button
+		public var backBtnPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,16,8,28);
+		
+		//forward button
+		public var forwardBtnPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,28,8,16);
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		

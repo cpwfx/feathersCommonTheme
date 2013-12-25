@@ -845,7 +845,10 @@ package harayoki.starling.feathers.themes
 			};
 			button.stateToSkinFunction = skinSelector.updateValue;
 			this.baseButtonInitializer(button);
-			button.paddingLeft = 28 * this.scale;
+			button.paddingTop = this._config.backBtnPadding.top * this.scale;
+			button.paddingBottom = this._config.backBtnPadding.bottom * this.scale;
+			button.paddingLeft = this._config.backBtnPadding.left * this.scale;
+			button.paddingRight = this._config.backBtnPadding.right * this.scale;
 		}
 
 		protected function forwardButtonInitializer(button:Button):void
@@ -862,7 +865,10 @@ package harayoki.starling.feathers.themes
 			};
 			button.stateToSkinFunction = skinSelector.updateValue;
 			this.baseButtonInitializer(button);
-			button.paddingRight = 28 * this.scale;
+			button.paddingTop = this._config.forwardBtnPadding.top * this.scale;
+			button.paddingBottom = this._config.forwardBtnPadding.bottom * this.scale;
+			button.paddingLeft = this._config.forwardBtnPadding.left * this.scale;
+			button.paddingRight = this._config.forwardBtnPadding.right * this.scale;
 		}
 
 		protected function buttonGroupButtonInitializer(button:Button):void
