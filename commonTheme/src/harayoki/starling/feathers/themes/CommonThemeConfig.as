@@ -72,6 +72,9 @@ package harayoki.starling.feathers.themes
 		//forward button
 		public var forwardBtnPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,28,8,16);
 		
+		//alert button
+		public var alertBtnMinSize:SizeSettingForTheme = new SizeSettingForTheme(120,60);
+		
 		//callout
 		public var calloutStagePadding:int = 16;
 		

@@ -901,7 +901,8 @@ package harayoki.starling.feathers.themes
 		protected function alertButtonGroupButtonInitializer(button:Button):void
 		{
 			this.buttonInitializer(button);
-			button.minWidth = 120 * this.scale;
+			button.minWidth = this._config.alertBtnMinSize.width * this.scale;
+			button.minHeight = this._config.alertBtnMinSize.height * this.scale;
 		}
 
 		protected function pickerListButtonInitializer(button:Button):void
