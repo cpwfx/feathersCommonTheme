@@ -186,7 +186,7 @@ package harayoki.starling.feathers.themes
 		public var headerTitleGap:int = 12;
 		public var headerMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
-		//header without bckground
+		//header without background
 		public var headerWithoutBackgroundPadding:PaddingSettingForTheme = new PaddingSettingForTheme(14,18,14,18);
 		public var headerWithoutBackgroundMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
