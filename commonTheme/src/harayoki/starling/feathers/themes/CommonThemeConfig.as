@@ -145,7 +145,7 @@ package harayoki.starling.feathers.themes
 		public var checkMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88); 
 		
 		//callout
-		public var calloutStagePadding:int = 16;
+		public var calloutStagePadding:PaddingSettingForTheme = new PaddingSettingForTheme(16,16,16,16);
 		
 		//slider
 		public var sliderSize:SizeSettingForTheme = new SizeSettingForTheme(60,210);
@@ -190,6 +190,8 @@ package harayoki.starling.feathers.themes
 		public var headerWithoutBackgroundPadding:PaddingSettingForTheme = new PaddingSettingForTheme(14,18,14,18);
 		public var headerWithoutBackgroundMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//callout
+		public var calloutPadding:PaddingSettingForTheme = new PaddingSettingForTheme(12,14,12,14);
 		
 		public function CommonThemeConfig()
 		{

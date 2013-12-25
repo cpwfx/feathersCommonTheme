@@ -437,8 +437,10 @@ package harayoki.starling.feathers.themes
 			FeathersControl.defaultTextEditorFactory = textEditorFactory;
 
 			PopUpManager.overlayFactory = popUpOverlayFactory;
-			Callout.stagePaddingTop = Callout.stagePaddingRight = Callout.stagePaddingBottom =
-				Callout.stagePaddingLeft = this._config.calloutStagePadding * this.scale;
+			Callout.stagePaddingTop = this._config.calloutStagePadding.top * this.scale;
+			Callout.stagePaddingRight = this._config.calloutStagePadding.right * this.scale;
+			Callout.stagePaddingBottom = this._config.calloutStagePadding.bottom * this.scale;
+			Callout.stagePaddingLeft = this._config.calloutStagePadding.left * this.scale;
 		}
 
 		protected function initializeScale():void
@@ -1537,10 +1539,10 @@ package harayoki.starling.feathers.themes
 			leftArrowSkin.scaleX = leftArrowSkin.scaleY = this.scale;
 			callout.leftArrowSkin = leftArrowSkin;
 
-			callout.paddingTop = 12 * this.scale;
-			callout.paddingRight = 14 * this.scale;
-			callout.paddingBottom = 12 * this.scale;
-			callout.paddingLeft = 14 * this.scale;
+			callout.paddingTop = this._config.calloutPadding.top * this.scale;
+			callout.paddingRight = this._config.calloutPadding.right * this.scale;
+			callout.paddingBottom = this._config.calloutPadding.bottom * this.scale;
+			callout.paddingLeft = this._config.calloutPadding.left * this.scale;
 		}
 
 		protected function panelInitializer(panel:Panel):void
