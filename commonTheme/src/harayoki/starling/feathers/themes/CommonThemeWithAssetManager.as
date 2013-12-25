@@ -1292,8 +1292,8 @@ package harayoki.starling.feathers.themes
 		protected function numericStepperInitializer(stepper:NumericStepper):void
 		{
 			stepper.buttonLayoutMode = NumericStepper.BUTTON_LAYOUT_MODE_SPLIT_HORIZONTAL;
-			stepper.incrementButtonLabel = "+";
-			stepper.decrementButtonLabel = "-";
+			stepper.incrementButtonLabel = this._config.numericStepperIncrementLabel;
+			stepper.decrementButtonLabel = this._config.numericStepperDecrementLabel;
 		}
 
 		protected function horizontalScrollBarInitializer(scrollBar:SimpleScrollBar):void
@@ -1302,7 +1302,9 @@ package harayoki.starling.feathers.themes
 			const defaultSkin:Scale3Image = new Scale3Image(this.horizontalScrollBarThumbSkinTextures, this.scale);
 			defaultSkin.width = 10 * this.scale;
 			scrollBar.thumbProperties.defaultSkin = defaultSkin;
-			scrollBar.paddingRight = scrollBar.paddingBottom = scrollBar.paddingLeft = 4 * this.scale;
+			scrollBar.paddingRight = 4 * this.scale;
+			scrollBar.paddingBottom = 4 * this.scale;
+			scrollBar.paddingLeft = 4 * this.scale;
 		}
 
 		protected function verticalScrollBarInitializer(scrollBar:SimpleScrollBar):void
@@ -1311,7 +1313,9 @@ package harayoki.starling.feathers.themes
 			const defaultSkin:Scale3Image = new Scale3Image(this.verticalScrollBarThumbSkinTextures, this.scale);
 			defaultSkin.height = 10 * this.scale;
 			scrollBar.thumbProperties.defaultSkin = defaultSkin;
-			scrollBar.paddingTop = scrollBar.paddingRight = scrollBar.paddingBottom = 4 * this.scale;
+			scrollBar.paddingTop = 4 * this.scale;
+			scrollBar.paddingRight = 4 * this.scale;
+			scrollBar.paddingBottom = 4 * this.scale;
 		}
 
 		protected function baseTextInputInitializer(input:TextInput):void

@@ -150,6 +150,10 @@ package harayoki.starling.feathers.themes
 		//slider
 		public var sliderSize:SizeSettingForTheme = new SizeSettingForTheme(60,210);
 		
+		//numeric stepper
+		public var numericStepperIncrementLabel:String = "+";
+		public var numericStepperDecrementLabel:String = "-";
+				
 		//textinput
 		public var textInputFontSize:int = 24; 
 		public var textInputFontFamily:String = "_sans";//オリジナルはHelvetica 
