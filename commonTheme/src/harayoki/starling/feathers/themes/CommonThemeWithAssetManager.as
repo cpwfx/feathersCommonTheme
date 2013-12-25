@@ -1150,10 +1150,14 @@ package harayoki.starling.feathers.themes
 
 			renderer.horizontalAlign = DefaultGroupedListHeaderOrFooterRenderer.HORIZONTAL_ALIGN_CENTER;
 			renderer.contentLabelProperties.elementFormat = this.lightElementFormat;
-			renderer.paddingTop = renderer.paddingBottom = 4 * this.scale;
-			renderer.paddingLeft = renderer.paddingRight = 16 * this.scale;
-			renderer.minWidth = renderer.minHeight = 44 * this.scale;
-			renderer.minTouchWidth = renderer.minTouchHeight = 44 * this.scale;
+			renderer.paddingTop = this._config.footerRendererPadding.top * this.scale;
+			renderer.paddingRight = this._config.footerRendererPadding.right * this.scale;
+			renderer.paddingBottom = this._config.footerRendererPadding.bottom * this.scale;
+			renderer.paddingLeft = this._config.footerRendererPadding.left * this.scale;
+			renderer.minWidth = this._config.footerRendererMinSize.width * this.scale;
+			renderer.minHeight = this._config.footerRendererMinSize.height * this.scale;
+			renderer.minTouchWidth = this._config.headerRendererMinTouchSize.width * this.scale;
+			renderer.minTouchHeight = this._config.headerRendererMinTouchSize.height * this.scale;
 
 			renderer.contentLoaderFactory = this.imageLoaderFactory;
 		}
