@@ -169,6 +169,13 @@ package harayoki.starling.feathers.themes
 		public var textInputMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88); 
 		public var textInputPadding:PaddingSettingForTheme = new PaddingSettingForTheme(12,14,10,14); 
 		
+		//numeric stepper text input
+		public var numericStepperTextInputPadding:PaddingSettingForTheme = new PaddingSettingForTheme(12,14,10,14);
+		public var numericStepperTextInputGap:int = 12;
+		public var numericStepperTextInputMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
+		public var numericStepperTextInputMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
+		
+		
 		public function CommonThemeConfig()
 		{
 			_analyzeVariables(CommonThemeConfig);

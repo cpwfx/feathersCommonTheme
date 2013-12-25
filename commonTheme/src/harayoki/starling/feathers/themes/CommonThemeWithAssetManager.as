@@ -1385,15 +1385,15 @@ package harayoki.starling.feathers.themes
 			backgroundFocusedSkin.height = 60 * this.scale;
 			input.backgroundFocusedSkin = backgroundFocusedSkin;
 
-			input.minWidth = 60 * this.scale;
-			input.minHeight = 60 * this.scale;
-			input.minTouchWidth = 88 * this.scale;
-			input.minTouchHeight = 88 * this.scale;
-			input.gap = 12 * this.scale;
-			input.paddingTop = 12 * this.scale;
-			input.paddingRight = 14 * this.scale;
-			input.paddingBottom = 10 * this.scale;
-			input.paddingLeft = 14 * this.scale;
+			input.minWidth = this._config.numericStepperTextInputMinSize.width * this.scale;
+			input.minHeight = this._config.numericStepperTextInputMinSize.height * this.scale;
+			input.minTouchWidth = this._config.numericStepperTextInputMinTouchSize.width * this.scale;
+			input.minTouchHeight = this._config.numericStepperTextInputMinTouchSize.height * this.scale;
+			input.gap = this._config.numericStepperTextInputGap * this.scale;
+			input.paddingTop = this._config.numericStepperTextInputPadding.top * this.scale;
+			input.paddingRight = this._config.numericStepperTextInputPadding.right * this.scale;
+			input.paddingBottom = this._config.numericStepperTextInputPadding.bottom * this.scale;
+			input.paddingLeft = this._config.numericStepperTextInputPadding.left * this.scale;
 			input.isEditable = false;
 			input.textEditorFactory = stepperTextEditorFactory;
 			input.textEditorProperties.textFormat = this.lightUICenteredTextFormat;
