@@ -54,6 +54,9 @@ package harayoki.starling.feathers.themes
 		public var simpleBtnMinSize:SizeSettingForTheme = new SizeSettingForTheme(60,60);
 		public var simpleBtnMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//scroll text
+		public var scrollTextPadding:PaddingSettingForTheme = new PaddingSettingForTheme(32,36,32,32);
+		
 		//base button		
 		public var btnPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,16,8,16);
 		public var btnGap:int = 12;

@@ -729,8 +729,10 @@ package harayoki.starling.feathers.themes
 		protected function scrollTextInitializer(text:ScrollText):void
 		{
 			text.textFormat = this.scrollTextTextFormat;
-			text.paddingTop = text.paddingBottom = text.paddingLeft = 32 * this.scale;
-			text.paddingRight = 36 * this.scale;
+			text.paddingTop = this._config.scrollTextPadding.top * this.scale;
+			text.paddingRight = this._config.scrollTextPadding.right * this.scale;
+			text.paddingBottom = this._config.scrollTextPadding.bottom * this.scale;
+			text.paddingLeft = this._config.scrollTextPadding.left * this.scale;
 		}
 
 		protected function baseButtonInitializer(button:Button):void
