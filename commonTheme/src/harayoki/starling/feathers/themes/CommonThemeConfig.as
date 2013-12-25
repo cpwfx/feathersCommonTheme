@@ -87,6 +87,9 @@ package harayoki.starling.feathers.themes
 		public var tabMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		public var tabMinTouchSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//buttonGroup
+		public var btnGroupGap:int = 18;
+		public var btnGroupMinSize:SizeSettingForTheme = new SizeSettingForTheme(560,0);//heightは無視されます
 		
 		//callout
 		public var calloutStagePadding:int = 16;

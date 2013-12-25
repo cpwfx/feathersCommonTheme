@@ -972,8 +972,10 @@ package harayoki.starling.feathers.themes
 
 		protected function buttonGroupInitializer(group:ButtonGroup):void
 		{
-			group.minWidth = 560 * this.scale;
-			group.gap = 18 * this.scale;
+			group.minWidth = this._config.btnGroupMinSize.width * this.scale;
+			//btnGroupMinSize.heightは使われません
+			
+			group.gap = this._config.btnGroupGap * this.scale;
 		}
 
 		protected function alertButtonGroupInitializer(group:ButtonGroup):void
