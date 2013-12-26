@@ -1,8 +1,11 @@
-package harayoki.starling.feathers.themes
+package harayoki.starling.feathers.themes.config
 {
 	import flash.geom.Rectangle;
 	import flash.utils.describeType;
 	import flash.utils.getQualifiedClassName;
+	import harayoki.starling.feathers.themes.datatype.ColorSettingForTheme;
+	import harayoki.starling.feathers.themes.datatype.SizeSettingForTheme;
+	import harayoki.starling.feathers.themes.datatype.PaddingSettingForTheme;
 
 	public class ThemeConfig
 	{

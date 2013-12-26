@@ -96,6 +96,8 @@ package harayoki.starling.feathers.themes
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 	import starling.utils.AssetManager;
+	import harayoki.starling.feathers.themes.util.FontSwfLoader;
+	import harayoki.starling.feathers.themes.config.CommonThemeConfig;
 
 	[Event(name="complete",type="starling.events.Event")]
 

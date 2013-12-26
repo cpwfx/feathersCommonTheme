@@ -1,4 +1,4 @@
-package harayoki.starling.feathers.themes
+package harayoki.starling.feathers.themes.datatype
 {
 	public class SizeSettingForTheme
 	{

@@ -1,4 +1,4 @@
-package harayoki.starling.feathers.themes
+package harayoki.starling.feathers.themes.util
 {
 	import flash.display.Loader;
 	import flash.display.MovieClip;
