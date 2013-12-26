@@ -1,4 +1,7 @@
 {
+	
+	"_":"必用なパラメータのみ設定すれば良い",
+	
 	"fontFile":"cinecaption.swf",
 	"fontClassList":["MyCinecaption"],
     "fontName":"cinecaption",
@@ -10,11 +13,6 @@
 	"fontSizeHeader":36,
     "lightTextColor":"#e5e5e5",
     
-    "btnPadding":[8,16,8,16],
-	
-    "atlasName": "metalworks",
-	
-    "_comment_":""
-    
+    "btnPadding":[8,16,8,16]
     
 }

@@ -3,9 +3,10 @@ package harayoki.starling.feathers.themes.config
 	import flash.geom.Rectangle;
 	import flash.utils.describeType;
 	import flash.utils.getQualifiedClassName;
+	
 	import harayoki.starling.feathers.themes.datatype.ColorSettingForTheme;
-	import harayoki.starling.feathers.themes.datatype.SizeSettingForTheme;
 	import harayoki.starling.feathers.themes.datatype.PaddingSettingForTheme;
+	import harayoki.starling.feathers.themes.datatype.SizeSettingForTheme;
 
 	public class ThemeConfig
 	{
@@ -13,7 +14,7 @@ package harayoki.starling.feathers.themes.config
 		protected static var _variablesAndTypes:Object;
 		protected static function _analyzeProperties(object:Object):void
 		{
-			trace(describeType(object));
+			//trace(describeType(object));
 			
 			if(!_variablesAndTypes)
 			{
@@ -125,7 +126,8 @@ package harayoki.starling.feathers.themes.config
 		
 		public function propertiesToJson(spacer:String="\t"):String
 		{
-			return JSON.stringify(propertiesToObject(),null,spacer);
+			var o:Object = propertiesToObject();
+			return JSON.stringify(o,null,spacer);
 		}
 		
 		
