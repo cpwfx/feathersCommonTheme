@@ -147,9 +147,8 @@ package harayoki.starling.feathers.themes
 				container = Starling.current.stage;
 			}
 			super(container);
-			this._themeId = themeId;
 			this._scaleToDPI = scaleToDPI;
-			this._config = new CommonThemeConfig();
+			this._config = new CommonThemeConfig(themeId);
 			this.processSource(assets, assetManager);
 		}
 
@@ -158,13 +157,6 @@ package harayoki.starling.feathers.themes
 		public function get config():CommonThemeConfig
 		{
 			return this._config;
-		}
-				
-		protected var _themeId:String;
-		
-		public function get themeId():String
-		{
-			return this._themeId;
 		}
 		
 		protected var _originalDPI:int;
@@ -332,15 +324,15 @@ package harayoki.starling.feathers.themes
 					{
 						assets = assetsDirectoryName + "/";
 					}
-					this.assetManager.enqueue(assets + this._themeId + ".xml");
-					this.assetManager.enqueue(assets + this._themeId + ".png");
-					this.assetManager.enqueue(assets + this._themeId + "_config.json");
+					this.assetManager.enqueue(assets + this._config.themeId + ".xml");
+					this.assetManager.enqueue(assets + this._config.themeId + ".png");
+					this.assetManager.enqueue(assets + this._config.themeId + "_config.json");
 				}
 				else if(isDirectory())
 				{
-					this.assetManager.enqueue(assets["resolvePath"](this._themeId + ".xml"));
-					this.assetManager.enqueue(assets["resolvePath"](this._themeId + ".png"));
-					this.assetManager.enqueue(assets["resolvePath"](this._themeId + "_config.json"));
+					this.assetManager.enqueue(assets["resolvePath"](this._config.themeId + ".xml"));
+					this.assetManager.enqueue(assets["resolvePath"](this._config.themeId + ".png"));
+					this.assetManager.enqueue(assets["resolvePath"](this._config.themeId + "_config.json"));
 				}
 				else
 				{
@@ -428,7 +420,7 @@ package harayoki.starling.feathers.themes
 		
 		protected function initializeConfig():void
 		{
-			this._config.applyJsonData(this.assetManager.getObject(this._themeId + "_config"));
+			this._config.applyJsonData(this.assetManager.getObject(this._config.themeId + "_config"));
 		}
 
 		protected function initializeGlobals():void

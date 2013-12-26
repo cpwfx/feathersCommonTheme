@@ -8,7 +8,7 @@ package harayoki.starling.feathers.themes
 	{
 		
 		protected static var _variablesAndTypes:Object;
-		protected static function _analyzeVariables(object:Object):void
+		protected static function _analyzeProperties(object:Object):void
 		{
 			trace(describeType(object));
 			
@@ -23,7 +23,18 @@ package harayoki.starling.feathers.themes
 			
 		}
 		
-		public var verbose:Boolean = true;
+		protected var _themeId:String = "";
+		public function get themeId():String
+		{
+			return _themeId;
+		}
+		public function get atlasName():String
+		{
+			return _themeId;
+		}
+		
+		protected var _verbose:Boolean = true;
+		
 		public function ThemeConfig()
 		{
 		}
@@ -77,7 +88,8 @@ package harayoki.starling.feathers.themes
 				}
 			}
 		}
-		public function variablesToObject():Object
+		
+		public function propertiesToObject():Object
 		{
 			var o:Object = {};
 			var key:String, type:String;
@@ -88,7 +100,6 @@ package harayoki.starling.feathers.themes
 				value = this[key];
 				switch(true)
 				{
-					
 					case value is Rectangle:
 						value = [Rectangle(value).x,Rectangle(value).y,Rectangle(value).width,Rectangle(value).height];
 						break;
@@ -96,7 +107,12 @@ package harayoki.starling.feathers.themes
 						value = [PaddingSettingForTheme(value).top,PaddingSettingForTheme(value).right,PaddingSettingForTheme(value).bottom,PaddingSettingForTheme(value).left];
 						break;
 					case value is SizeSettingForTheme:
-						value = [SizeSettingForTheme(value).width,SizeSettingForTheme(value).height]
+						value = [SizeSettingForTheme(value).width,SizeSettingForTheme(value).height];
+						break;
+					case value is ColorSettingForTheme:
+						value = ColorSettingForTheme(value).toString();
+						break;
+					default:
 						break;
 				}				
 				o[key] = value;
@@ -104,47 +120,47 @@ package harayoki.starling.feathers.themes
 			return o;
 		}
 		
-		public function variablesToJson():String
+		public function propertiesToJson(spacer:String="\t"):String
 		{
-			return JSON.stringify(variablesToObject());
+			return JSON.stringify(propertiesToObject(),null,spacer);
 		}
 		
 		
 		protected function _setupBooleanData(key:String,value:Object):void
 		{
 			this[key] = _selectParam(value,this[key]) as Boolean;
-			verbose && trace("Boolean : ",key,"'"+this[key]+"'");
+			_verbose && trace("Boolean : ",key,"'"+this[key]+"'");
 		}		
 		
 		protected function _setupStringData(key:String,value:Object):void
 		{
 			this[key] = _selectParam(value,this[key]) as String;
-			verbose && trace("string : ",key,"'"+this[key]+"'");
+			_verbose && trace("string : ",key,"'"+this[key]+"'");
 		}
 		
 		protected function _setupIntData(key:String,value:Object):void
 		{
 			this[key] = _selectParam(value,this[key]) as int;
-			verbose && trace("int : ",key,this[key]);
+			_verbose && trace("int : ",key,this[key]);
 		}
 		
 		protected function _setupUintData(key:String,value:Object):void
 		{
 			this[key] = _selectParam(value,this[key]) as uint;
-			verbose && trace("uint : ",key,this[key]);
+			_verbose && trace("uint : ",key,this[key]);
 		}
 		
 		protected function _setupNumberData(key:String,value:Object):void
 		{
 			this[key] = _selectParam(value,this[key]) as Number;
-			verbose && trace("Number : ",key,this[key]);
+			_verbose && trace("Number : ",key,this[key]);
 		}		
 		
 		protected function _setupArray(key:String,value:Object):void
 		{
 			var arr:Array = value as Array;
 			this[key] = _selectParam(arr,this[key]) as Array;
-			verbose && trace("Array : ",key,this[key]);
+			_verbose && trace("Array : ",key,this[key]);
 		}		
 		
 		protected function _setupRectangle(key:String,value:Object):void
@@ -161,7 +177,7 @@ package harayoki.starling.feathers.themes
 				}
 			}
 			this[key] = _selectParam(value,this[key]) as Rectangle;
-			verbose && trace("Rectangle : ",key,this[key]);
+			_verbose && trace("Rectangle : ",key,this[key]);
 		}
 		
 		protected function _setUpPadding(key:String,value:Object):void
@@ -178,7 +194,7 @@ package harayoki.starling.feathers.themes
 				}
 			}
 			this[key] = _selectParam(value,this[key]) as PaddingSettingForTheme;
-			verbose && trace("PaddingSettingForTheme : ",key,this[key]);
+			_verbose && trace("PaddingSettingForTheme : ",key,this[key]);
 		}
 		
 		protected function _setUpSize(key:String,value:Object):void
@@ -195,7 +211,7 @@ package harayoki.starling.feathers.themes
 				}
 			}
 			this[key] = _selectParam(value,this[key]) as SizeSettingForTheme;
-			verbose && trace("SizeSettingForTheme : ",key,this[key]);
+			_verbose && trace("SizeSettingForTheme : ",key,this[key]);
 		}
 		
 		
@@ -205,7 +221,7 @@ package harayoki.starling.feathers.themes
 			{
 				this[key] = ColorSettingForTheme.getColorSettingByString(colorString+"");
 			}
-			verbose && trace("ColorSettingForTheme : ",key,this[key].toString());
+			_verbose && trace("ColorSettingForTheme : ",key,this[key].toString());
 		}
 		
 		protected function _selectParam(newVal:Object,defaltValue:Object):Object

@@ -4,12 +4,10 @@ package harayoki.starling.feathers.themes
 
 	public class CommonThemeConfig extends ThemeConfig
 	{
+		
 		//それぞれのpublic var の名前は jsonのパラメータと同じです
 		
-		/* themeファイルに元々定義されていたパラメータ */
-		
 		public var fontName:String = "_sans";
-		public var atlasName:String = "";
 		public var backgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x4a4137);
 		
 		public var lightTextColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0xe5e5e5);
@@ -39,8 +37,6 @@ package harayoki.starling.feathers.themes
 		public var tabScale9Grid:Rectangle = new Rectangle(19, 19, 50, 50);
 		public var scrollBarThumbRegion1:int = 5;
 		public var scrollBarThumbRegion2:int = 14;
-		
-		/* 追加されたパラメータ */ 
 		
 		//font
 		public var fontFile:String = "";//"SourceSansPro.swf"などフォント埋め込み済みのswfを指定します
@@ -217,12 +213,17 @@ package harayoki.starling.feathers.themes
 		public var insetGroupedListLayoutPadding:int = 18;
 		public var insetGroupedListLayoutGap:int = 0;
 		
-		public function CommonThemeConfig()
+		public function CommonThemeConfig(themeId:String)
 		{
-			_analyzeVariables(CommonThemeConfig);
+			this._themeId = themeId;
+			
+			_analyzeProperties(CommonThemeConfig);
+			
+			trace("------------");
+			trace(propertiesToJson());
+			trace("------------");
+			
 		}
-		
-
 		
 	}
 }
