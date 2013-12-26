@@ -2,6 +2,7 @@ package harayoki.starling.feathers.themes
 {
 	import flash.display.MovieClip;
 	import flash.errors.IllegalOperationError;
+	import flash.text.TextField;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import flash.text.engine.CFFHinting;
@@ -341,10 +342,10 @@ package harayoki.starling.feathers.themes
 					if(swf)
 					{
 						//test用に画面に表示?
-						//swf.x = 90;
-						//swf.visible = true;
-						//Starling.current.nativeStage.addChild(swf);//TODO チェックaddChildする必要がある？
-					}
+						swf.x = 90;
+						swf.visible = true;
+						Starling.current.nativeStage.addChild(swf);//TODO チェックaddChildする必要がある？
+ 					}
 					assetManager_onComplete();
 				}
 				
@@ -428,8 +429,8 @@ package harayoki.starling.feathers.themes
 		protected function initializeFonts():void
 		{
 			
-			trace("EmbedFonts:",FontUtil.getAllEmbedFontNames());
-			trace("DeviceFonts:",FontUtil.getAllDeviceFontNames());
+			trace("EmbedFonts:",FontUtil.getAllEmbedFontInfos());
+			trace("DeviceFonts:",FontUtil.getAllDeviceFontInfos());
 			
 			var i:int, len:int;
 			var fontName:String;
@@ -477,14 +478,13 @@ package harayoki.starling.feathers.themes
 			this.lightUICenteredTextFormat = new TextFormat(fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor, true, null, null, null, null, TextFormatAlign.CENTER);
 
 			this.regularFontDescription = new FontDescription(fontName, FontWeight.NORMAL, FontPosture.NORMAL, fontLookup, RenderingMode.CFF, CFFHinting.NONE);
-			//this.boldFontDescription = new FontDescription(fontName, FontWeight.BOLD, FontPosture.NORMAL, fontLookup, RenderingMode.CFF, CFFHinting.NONE);
-			this.boldFontDescription = new FontDescription(fontName, FontWeight.NORMAL, FontPosture.NORMAL, fontLookup, RenderingMode.CFF, CFFHinting.NONE);
+			this.boldFontDescription = new FontDescription(fontName, FontWeight.BOLD, FontPosture.NORMAL, fontLookup, RenderingMode.CFF, CFFHinting.NONE);
 			
 			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(this._config.fontSizeHeader * this.scale), this._config.lightTextColor.colorData);
 			this.headerElementFormat.locale = locale;
-
+			
 			this.darkUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor.colorData);
-			this.darkUIElementFormat.locale = locale;
+			this.darkUIElementFormat.locale = locale;			
 			this.lightUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor.colorData);
 			this.lightUIElementFormat.locale = locale;
 			this.selectedUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.selectedTextColor.colorData);

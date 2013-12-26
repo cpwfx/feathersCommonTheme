@@ -5,19 +5,19 @@ package harayoki.starling.feathers.themes.util
 
 	public class FontUtil
 	{
-		private static const DEFAULT_FONT_FAMILIES:Vector.<String> = new <String>["_ゴシック","_明朝","_sans","_serif"];
+		private static const DEFAULT_FONT_FAMILIES:Vector.<String> = new <String>["_ゴシック","_明朝","_sans","_serif","_typewriter"];
 		
-		public static function getAllEmbedFontNames():Vector.<String>
+		public static function getAllEmbedFontInfos():Vector.<String>
 		{
 			var vec:Vector.<String> = new Vector.<String>();
 			var fonts:Array = Font.enumerateFonts(false);
 			for each(var font:Font in fonts)
 			{
-				vec.push(font.fontName);
+				vec.push(font.fontName+"("+font.fontType+","+font.fontStyle+")");
 			}			
 			return vec;
 		}
-		public static function getAllDeviceFontNames():Vector.<String>
+		public static function getAllDeviceFontInfos():Vector.<String>
 		{
 			var vec:Vector.<String> = new Vector.<String>();
 			var fonts:Array = Font.enumerateFonts(true);
@@ -25,7 +25,7 @@ package harayoki.starling.feathers.themes.util
 			{
 				if(font.fontType == FontType.DEVICE)
 				{
-					vec.push(font.fontName);
+					vec.push(font.fontName+"("+font.fontType+","+font.fontStyle+")");
 				}
 			}			
 			return vec;
