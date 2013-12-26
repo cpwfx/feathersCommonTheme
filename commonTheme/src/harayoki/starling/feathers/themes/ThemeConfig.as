@@ -8,14 +8,14 @@ package harayoki.starling.feathers.themes
 	{
 		
 		protected static var _variablesAndTypes:Object;
-		protected static function _analyzeVariables(instance:Object):void
+		protected static function _analyzeVariables(object:Object):void
 		{
-			trace(describeType(instance));
+			trace(describeType(object));
 			
 			if(!_variablesAndTypes)
 			{
 				_variablesAndTypes = {};
-				var xl:XMLList = describeType(instance).factory.variable;
+				var xl:XMLList = describeType(object).factory.variable;
 				for each(var x:XML in xl) {
 					_variablesAndTypes[x.@name] = x.@type;
 				}
@@ -34,8 +34,9 @@ package harayoki.starling.feathers.themes
 			
 			const PADDING_CLASS_NAME:String = flash.utils.getQualifiedClassName(PaddingSettingForTheme);
 			const SIZE_CLASS_NAME:String = flash.utils.getQualifiedClassName(SizeSettingForTheme);
+			const COLOR_CLASS_NAME:String = flash.utils.getQualifiedClassName(ColorSettingForTheme);
 			
-			var key:String, type:String, temp:String;
+			var key:String, type:String;
 			var value:Object;
 			for (key in _variablesAndTypes)
 			{
@@ -57,15 +58,7 @@ package harayoki.starling.feathers.themes
 						_setupIntData(key,value);
 						break;
 					case "uint":
-						temp = value as String;
-						if(temp && temp.indexOf("#")==0)
-						{
-							_setupColor(key,temp);
-						}
-						else
-						{
-							_setupUintData(key,value);
-						}
+						_setupUintData(key,value);
 						break;
 					case "Array":
 						_setupArray(key,value);
@@ -79,9 +72,43 @@ package harayoki.starling.feathers.themes
 					case SIZE_CLASS_NAME:
 						_setUpSize(key,value);
 						break;
+					case COLOR_CLASS_NAME:
+						_setUpColor(key,value);
 				}
 			}
 		}
+		public function variablesToObject():Object
+		{
+			var o:Object = {};
+			var key:String, type:String;
+			var value:Object;
+			for (key in _variablesAndTypes)
+			{
+				type = _variablesAndTypes[key];
+				value = this[key];
+				switch(true)
+				{
+					
+					case value is Rectangle:
+						value = [Rectangle(value).x,Rectangle(value).y,Rectangle(value).width,Rectangle(value).height];
+						break;
+					case value is PaddingSettingForTheme:
+						value = [PaddingSettingForTheme(value).top,PaddingSettingForTheme(value).right,PaddingSettingForTheme(value).bottom,PaddingSettingForTheme(value).left];
+						break;
+					case value is SizeSettingForTheme:
+						value = [SizeSettingForTheme(value).width,SizeSettingForTheme(value).height]
+						break;
+				}				
+				o[key] = value;
+			}
+			return o;
+		}
+		
+		public function variablesToJson():String
+		{
+			return JSON.stringify(variablesToObject());
+		}
+		
 		
 		protected function _setupBooleanData(key:String,value:Object):void
 		{
@@ -172,16 +199,13 @@ package harayoki.starling.feathers.themes
 		}
 		
 		
-		protected function _setupColor(key:String,colorString:String):void
+		protected function _setUpColor(key:String,colorString:Object):void
 		{
-			colorString = colorString.replace("#","");
-			if(colorString.length==3)
+			if(colorString)
 			{
-				var a:Array = colorString.split("");
-				colorString = a[0]+a[0]+a[1]+a[1]+a[2]+a[2];
+				this[key] = ColorSettingForTheme.getColorSettingByString(colorString+"");
 			}
-			this[key] = parseInt("0x" + colorString,16) as uint;
-			verbose && trace("color : ",key,"#"+this[key]);
+			verbose && trace("ColorSettingForTheme : ",key,this[key].toString());
 		}
 		
 		protected function _selectParam(newVal:Object,defaltValue:Object):Object

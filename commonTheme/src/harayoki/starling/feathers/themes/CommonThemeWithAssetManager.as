@@ -135,7 +135,7 @@ package harayoki.starling.feathers.themes
 		//元はstatic だがconfigの値を参照したいので変更
 		protected function popUpOverlayFactory():DisplayObject
 		{
-			const quad:Quad = new Quad(100, 100, this._config.modalOverlayColor);
+			const quad:Quad = new Quad(100, 100, this._config.modalOverlayColor.colorData);
 			quad.alpha = this._config.modalOverlayAlpha;
 			return quad;
 		}
@@ -301,8 +301,8 @@ package harayoki.starling.feathers.themes
 				return;
 			}
 
-			this.root.stage.color = this._config.backgroundColor;
-			Starling.current.nativeStage.color = this._config.backgroundColor;
+			this.root.stage.color = this._config.backgroundColor.colorData;
+			Starling.current.nativeStage.color = this._config.backgroundColor.colorData;
 		}
 		
 		protected function assetManager_onComplete():void
@@ -470,29 +470,29 @@ package harayoki.starling.feathers.themes
 			this.regularFontDescription = new FontDescription(this._config.fontName, FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
 			this.boldFontDescription = new FontDescription(this._config.fontName, FontWeight.BOLD, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
 
-			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(this._config.fontSizeHeader * this.scale), this._config.lightTextColor);
+			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(this._config.fontSizeHeader * this.scale), this._config.lightTextColor.colorData);
 
-			this.darkUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor);
-			this.lightUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor);
-			this.selectedUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.selectedTextColor);
-			this.lightUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.disabledTextColor);
-			this.darkUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkDisabledTextColor);
+			this.darkUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor.colorData);
+			this.lightUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor.colorData);
+			this.selectedUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.selectedTextColor.colorData);
+			this.lightUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.disabledTextColor.colorData);
+			this.darkUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkDisabledTextColor.colorData);
 
-			this.largeUIDarkElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.darkTextColor);
-			this.largeUILightElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.lightTextColor);
-			this.largeUISelectedElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.selectedTextColor);
-			this.largeUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.disabledTextColor);
+			this.largeUIDarkElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.darkTextColor.colorData);
+			this.largeUILightElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.lightTextColor.colorData);
+			this.largeUISelectedElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.selectedTextColor.colorData);
+			this.largeUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.disabledTextColor.colorData);
 
-			this.darkElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor);
-			this.lightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor);
-			this.disabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.disabledTextColor);
+			this.darkElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor.colorData);
+			this.lightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor.colorData);
+			this.disabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.disabledTextColor.colorData);
 
-			this.smallLightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeSmall * this.scale, this._config.lightTextColor);
-			this.smallDisabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeSmall * this.scale, this._config.disabledTextColor);
+			this.smallLightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeSmall * this.scale, this._config.lightTextColor.colorData);
+			this.smallDisabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeSmall * this.scale, this._config.disabledTextColor.colorData);
 
-			this.largeDarkElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.darkTextColor);
-			this.largeLightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.lightTextColor);
-			this.largeDisabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.disabledTextColor);
+			this.largeDarkElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.darkTextColor.colorData);
+			this.largeLightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.lightTextColor.colorData);
+			this.largeDisabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.disabledTextColor.colorData);
 		}
 
 		protected function initializeTextures():void
@@ -943,7 +943,7 @@ package harayoki.starling.feathers.themes
 
 		protected function tabInitializer(tab:Button):void
 		{
-			const defaultSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.tabBackgroundColor);
+			const defaultSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.tabBackgroundColor.colorData);
 			tab.defaultSkin = defaultSkin;
 
 			const downSkin:Scale9Image = new Scale9Image(this.tabDownSkinTextures, this.scale);
@@ -952,7 +952,7 @@ package harayoki.starling.feathers.themes
 			const defaultSelectedSkin:Scale9Image = new Scale9Image(this.tabSelectedSkinTextures, this.scale);
 			tab.defaultSelectedSkin = defaultSelectedSkin;
 
-			const disabledSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.tabDisabledBackgroundColor);
+			const disabledSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.tabDisabledBackgroundColor.colorData);
 			tab.disabledSkin = disabledSkin;
 
 			const selectedDisabledSkin:Scale9Image = new Scale9Image(this.tabSelectedDisabledSkinTextures, this.scale);
@@ -1130,7 +1130,7 @@ package harayoki.starling.feathers.themes
 
 		protected function headerRendererInitializer(renderer:DefaultGroupedListHeaderOrFooterRenderer):void
 		{
-			const defaultSkin:Quad = new Quad(44 * this.scale, 44 * this.scale, this._config.groupedListHeaderBackgroundColor);
+			const defaultSkin:Quad = new Quad(44 * this.scale, 44 * this.scale, this._config.groupedListHeaderBackgroundColor.colorData);
 			renderer.backgroundSkin = defaultSkin;
 
 			renderer.horizontalAlign = DefaultGroupedListHeaderOrFooterRenderer.HORIZONTAL_ALIGN_LEFT;
@@ -1149,7 +1149,7 @@ package harayoki.starling.feathers.themes
 
 		protected function footerRendererInitializer(renderer:DefaultGroupedListHeaderOrFooterRenderer):void
 		{
-			const defaultSkin:Quad = new Quad(44 * this.scale, 44 * this.scale, this._config.groupedListFooterBackgroundColor);
+			const defaultSkin:Quad = new Quad(44 * this.scale, 44 * this.scale, this._config.groupedListFooterBackgroundColor.colorData);
 			renderer.backgroundSkin = defaultSkin;
 
 			renderer.horizontalAlign = DefaultGroupedListHeaderOrFooterRenderer.HORIZONTAL_ALIGN_CENTER;
@@ -1573,13 +1573,13 @@ package harayoki.starling.feathers.themes
 
 		protected function listInitializer(list:List):void
 		{
-			const backgroundSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.listBackgroundColor);
+			const backgroundSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.listBackgroundColor.colorData);
 			list.backgroundSkin = backgroundSkin;
 		}
 
 		protected function groupedListInitializer(list:GroupedList):void
 		{
-			const backgroundSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.listBackgroundColor);
+			const backgroundSkin:Quad = new Quad(88 * this.scale, 88 * this.scale, this._config.listBackgroundColor.colorData);
 			list.backgroundSkin = backgroundSkin;
 		}
 

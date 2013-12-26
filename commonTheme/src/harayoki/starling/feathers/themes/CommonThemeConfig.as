@@ -10,19 +10,19 @@ package harayoki.starling.feathers.themes
 		
 		public var fontName:String = "_sans";
 		public var atlasName:String = "";
-		public var backgroundColor:uint = 0x4a4137;
+		public var backgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x4a4137);
 		
-		public var lightTextColor:uint = 0xe5e5e5;
-		public var darkTextColor:uint = 0x1a1816;
-		public var selectedTextColor:uint = 0xff9900;
-		public var disabledTextColor:uint = 0x8a8a8a;
-		public var darkDisabledTextColor:uint = 0x383430;
-		public var listBackgroundColor:uint = 0x383430;
-		public var tabBackgroundColor:uint = 0x1a1816;
-		public var tabDisabledBackgroundColor:uint = 0x292624;
-		public var groupedListHeaderBackgroundColor:uint = 0x2e2a26;
-		public var groupedListFooterBackgroundColor:uint = 0x2e2a26;
-		public var modalOverlayColor:uint = 0x29241e;
+		public var lightTextColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0xe5e5e5);
+		public var darkTextColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x1a1816);
+		public var selectedTextColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0xff9900);
+		public var disabledTextColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x8a8a8a);
+		public var darkDisabledTextColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x383430);
+		public var listBackgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x383430);
+		public var tabBackgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x1a1816);
+		public var tabDisabledBackgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x292624);
+		public var groupedListHeaderBackgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x2e2a26);
+		public var groupedListFooterBackgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x2e2a26);
+		public var modalOverlayColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x29241e);
 		public var modalOverlayAlpha:Number = 0.8;
 
 		public var defaultScale9Grid:Rectangle = new Rectangle(5, 5, 22, 22);
