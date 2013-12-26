@@ -1,7 +1,7 @@
 package harayoki.starling.feathers.themes.util
 {
+	import flash.display.DisplayObject;
 	import flash.display.Loader;
-	import flash.display.MovieClip;
 	import flash.events.ErrorEvent;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -12,7 +12,6 @@ package harayoki.starling.feathers.themes.util
 	public class FontSwfLoader
 	{
 		private var _loader:Loader;
-		private var _fontClassList:Array;
 		private var _callback:Function;
 		
 		public function FontSwfLoader()
@@ -23,13 +22,11 @@ package harayoki.starling.feathers.themes.util
 		{
 			_cleanLoader();
 			_loader = null;
-			_fontClassList = null;
 			_callback = null;
 		}
 		
-		public function load(path:String,fontClassList:Array,callback:Function):void
+		public function load(path:String,callback:Function):void
 		{
-			_fontClassList = fontClassList;
 			
 			var req:URLRequest = new URLRequest(path);
 			_callback = callback;
@@ -42,25 +39,26 @@ package harayoki.starling.feathers.themes.util
 		
 		private function _handleComplete(ev:Event):void
 		{
-			
-			var swf:MovieClip = _loader.content as MovieClip;
-			swf.stop();
-			
-			for each(var fontClassName:String in _fontClassList)
+
+			//trace(typeof _loader.content);
+			var fontSwf:DisplayObject = _loader.content as DisplayObject;
+			var fonClasses:Vector.<Class>
+			try
 			{
-				if(_loader.contentLoaderInfo.applicationDomain.hasDefinition(fontClassName))
-				{
-					var MyFont:Class = _loader.contentLoaderInfo.applicationDomain.getDefinition(fontClassName) as Class;
-					Font.registerFont(MyFont);		
-					trace("font class:",fontClassName,"found.",MyFont,(new MyFont() as Font).fontName);
-				}
-				else
-				{
-					trace("font class",fontClassName,"not found");
-				}
+				fonClasses= fontSwf["getFontClasses"]() as Vector.<Class>;
+			}
+			catch(e:Error)
+			{
+				trace("couldn't get font classes");
+			}
+			
+			for each(var fontClass:Class in fonClasses)
+			{
+				Font.registerFont(fontClass);		
+				trace("font class found.",(new fontClass() as Font).fontName);
 			}
 						
-			_callback && _callback.apply(null,[swf]);
+			_callback && _callback.apply(null,[fontSwf]);
 			clean();
 		}
 		

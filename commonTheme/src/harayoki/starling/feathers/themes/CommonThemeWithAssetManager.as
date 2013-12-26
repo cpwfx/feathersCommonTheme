@@ -1,5 +1,6 @@
-package harayoki.starling.feathers.themes
+﻿package harayoki.starling.feathers.themes
 {
+	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.errors.IllegalOperationError;
 	import flash.text.TextField;
@@ -105,7 +106,7 @@ package harayoki.starling.feathers.themes
 		}
 
 		//元はstatic だがconfigの値を参照したいので変更
-		protected function popUpOverlayFactory():DisplayObject
+		protected function popUpOverlayFactory():starling.display.DisplayObject
 		{
 			const quad:Quad = new Quad(100, 100, this._config.modalOverlayColor.colorData);
 			quad.alpha = this._config.modalOverlayAlpha;
@@ -324,11 +325,11 @@ package harayoki.starling.feathers.themes
 						var loader:FontSwfLoader = new FontSwfLoader();
 						if(assets is String)
 						{
-							loader.load(assets + self._config.fontFile,self._config.fontClassList,onFontSwfLoad);
+							loader.load(assets + self._config.fontFile,onFontSwfLoad);
 						}
 						else
 						{
-							loader.load(assets["resolvePath"](self._config.fontFile)["nativePath"] as String,self._config.fontClassList,onFontSwfLoad);//TODO 未検証
+							loader.load(assets["resolvePath"](self._config.fontFile)["nativePath"] as String,onFontSwfLoad);//TODO 未検証
 						}
 					}						
 					else
@@ -337,10 +338,11 @@ package harayoki.starling.feathers.themes
 					}
 				}
 				
-				function onFontSwfLoad (swf:flash.display.MovieClip):void
+				function onFontSwfLoad (swf:flash.display.DisplayObject):void
 				{
 					if(swf)
 					{
+						trace("------",swf);
 						//test用に画面に表示?
 						swf.x = 90;
 						swf.visible = true;
@@ -431,44 +433,23 @@ package harayoki.starling.feathers.themes
 			
 			trace("EmbedFonts:",FontUtil.getAllEmbedFontInfos());
 			trace("DeviceFonts:",FontUtil.getAllDeviceFontInfos());
+			var fontLookup:String = FontLookup.EMBEDDED_CFF;
+			var fontName:String = this._config.fontName;
 			
-			var i:int, len:int;
-			var fontName:String;
-			var fontLookup:String;
-			var foundFont:Boolean = false;
-			len = this._config.fontNames.length;
-			for (i=0;i<len;i++)
+			if(fontName)
 			{
-				fontName = this._config.fontNames[i];
-				var a:FontUtil;
-				if(FontUtil.isEmbedFont(fontName))
-				{
-					trace("found embed font :"+fontName);
-					foundFont = true;
-					fontLookup = FontLookup.EMBEDDED_CFF;
-					break;
-				}
-				if(FontUtil.isDeveiceFont(fontName))
-				{
-					trace("found device font :"+fontName);					
-					foundFont = true;
-					fontLookup = FontLookup.DEVICE;
-					break;
-				}
-				if(FontUtil.isDefaultFontFamily(fontName))
-				{
-					trace("found font family :"+fontName);					
-					foundFont = true;
-					fontLookup = FontLookup.DEVICE;
-					break;
-				}
-				trace(fontName,"not found");
+				trace("fontName : "+fontName);	
 			}
-			if(!foundFont)
+			else
 			{
+				trace("font '"+fontName+"' not found, use _sans");	
 				fontName = "_sans";
+			}
+			
+			if(FontUtil.isDefaultFontFamily(fontName) || FontUtil.isDeveiceFont(fontName))
+			{
+				trace(fontName + " is device font");
 				fontLookup = FontLookup.DEVICE;
-				trace("fonts not found, use "+fontName);					
 			}
 			
 			var locale:String = this._config.fontLocale ? this._config.fontLocale : "en";
@@ -667,7 +648,7 @@ package harayoki.starling.feathers.themes
 			this.setInitializerForClass(ScrollContainer, scrollContainerToolbarInitializer, ScrollContainer.ALTERNATE_NAME_TOOLBAR);
 		}
 
-		protected function pageIndicatorNormalSymbolFactory():DisplayObject
+		protected function pageIndicatorNormalSymbolFactory():starling.display.DisplayObject
 		{
 			const symbol:ImageLoader = new ImageLoader();
 			symbol.source = this.pageIndicatorNormalSkinTexture;
@@ -675,7 +656,7 @@ package harayoki.starling.feathers.themes
 			return symbol;
 		}
 
-		protected function pageIndicatorSelectedSymbolFactory():DisplayObject
+		protected function pageIndicatorSelectedSymbolFactory():starling.display.DisplayObject
 		{
 			const symbol:ImageLoader = new ImageLoader();
 			symbol.source = this.pageIndicatorSelectedSkinTexture;
@@ -690,7 +671,7 @@ package harayoki.starling.feathers.themes
 			return image;
 		}
 
-		protected function nothingInitializer(target:DisplayObject):void {}
+		protected function nothingInitializer(target:starling.display.DisplayObject):void {}
 
 		protected function screenInitializer(screen:Screen):void
 		{

@@ -2,10 +2,9 @@
 	
 	"_":"必用なパラメータのみ設定すれば良い",
 	
-	"fontLocale":"ja",
-	"fontFile":"cinecaption.swf",
-	"fontClassList":["MyCinecaption"],
-    "fontNames":["cinecaption"],
+	"fontLocale":"en",
+	"fontFile":"SourceSansPro.swf",
+    "fontName":"SourceSansPro",
 	
     "backgroundColor":"#4a4137",
 	"fontSizeNormal":24,

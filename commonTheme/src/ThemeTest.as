@@ -1,5 +1,7 @@
 package
 {
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 	import flash.geom.Rectangle;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
@@ -21,11 +23,15 @@ package
 		private static var _starling:Starling;
 		public static function main():void
 		{
+			Objects.stage.align = StageAlign.TOP_LEFT;
+			Objects.stage.scaleMode = StageScaleMode.NO_SCALE;
 			Starling.handleLostContext = true;
 			_starling = new Starling(ThemeTest,Objects.stage,new Rectangle(0,0,Constants.CONTENTS_WIDTH,Constants.CONTENTS_HEIGHT));
 			_starling.showStats = true;
 			_starling.showStatsAt("left","top",2);				
 		}
+		
+		private var _themeManager:CommonThemeWithAssetManager
 		
 		public function ThemeTest()
 		{
@@ -37,8 +43,8 @@ package
 			stage.addEventListener(Event.RESIZE,_handleStageResize);
 			
 			_starling.start();
-			var themeManager:CommonThemeWithAssetManager = new CommonThemeWithAssetManager("metalworks","assets/sampleTheme/",Objects.assetManager,stage,false);
-			themeManager.addEventListener(Event.COMPLETE,_handleThemeManagerReady);
+			_themeManager = new CommonThemeWithAssetManager("metalworks","assets/sampleTheme/",Objects.assetManager,stage,false);
+			_themeManager.addEventListener(Event.COMPLETE,_handleThemeManagerReady);
 			
 		}
 		
@@ -63,12 +69,12 @@ package
 			var label:Label = new Label();
 			label.x = 48;
 			label.y = 256;
-			label.text = "ここはFeathersのLabelです。動的埋め込みNG。。。";
+			label.text = "ここはFeathersのLabelです。";
 			addChild(label);
 			
 			var tf:TextField = new TextField();
-			tf.defaultTextFormat= new TextFormat("cinecaption",26,0xff99ff);
-			tf.text = "ここはFlashのTextFieldです。動的埋め込みOK。";
+			tf.defaultTextFormat= new TextFormat(_themeManager.config.fontName,26,0xff99ff,true);
+			tf.text = "ここはFlashのTextFieldです。";
 			tf.embedFonts = true;
 			tf.x = 48;
 			tf.y = 300;

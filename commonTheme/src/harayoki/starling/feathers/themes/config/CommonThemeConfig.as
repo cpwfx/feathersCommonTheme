@@ -11,7 +11,7 @@ package harayoki.starling.feathers.themes.config
 		
 		//それぞれのpublic var の名前は jsonのパラメータと同じです
 		
-		public var fontNames:Array = [];
+		public var fontName:String = "";
 		public var fontLocale:String = "en";
 		public var backgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x4a4137);
 		
@@ -45,7 +45,6 @@ package harayoki.starling.feathers.themes.config
 		
 		//font
 		public var fontFile:String = "";//"SourceSansPro.swf"などフォント埋め込み済みのswfを指定します
-		public var fontClassList:Array = [];
 		public var fontSizeNormal:int = 24;
 		public var fontSizeSmall:int = 28;
 		public var fontSizeLarge:int = 18;
