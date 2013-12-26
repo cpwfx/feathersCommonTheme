@@ -6,10 +6,10 @@ package
 	public class cinecaption extends Sprite
 	{
 		
-		[Embed(source="cinecaption227.ttf", fontFamily="cinecaption",fontWeight="normal",mimeType="application/x-font",embedAsCFF="true")]
+		[Embed(source="../cinecaption227.ttf", fontFamily="cinecaption",fontWeight="normal",mimeType="application/x-font",embedAsCFF="true")]
 		protected static const SOURCE_CINECAPTION_CFF:Class;
 		
-		[Embed(source="cinecaption227.ttf",fontFamily="cinecaption",fontWeight="normal",mimeType="application/x-font",embedAsCFF="false")]
+		[Embed(source="../cinecaption227.ttf",fontFamily="cinecaption",fontWeight="normal",mimeType="application/x-font",embedAsCFF="false")]
 		protected static const SOURCE_CINECAPTION:Class;
 		
 		public function cinecaption()
