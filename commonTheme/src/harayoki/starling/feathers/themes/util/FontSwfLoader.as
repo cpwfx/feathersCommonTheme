@@ -58,7 +58,7 @@ package harayoki.starling.feathers.themes.util
 				trace("font class found.",(new fontClass() as Font).fontName);
 			}
 						
-			_callback && _callback.apply(null,[fontSwf]);
+			_callback && _callback.apply(null);
 			clean();
 		}
 		

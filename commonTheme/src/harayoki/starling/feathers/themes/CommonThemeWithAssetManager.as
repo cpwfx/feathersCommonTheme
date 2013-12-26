@@ -338,16 +338,8 @@
 					}
 				}
 				
-				function onFontSwfLoad (swf:flash.display.DisplayObject):void
+				function onFontSwfLoad():void
 				{
-					if(swf)
-					{
-						trace("------",swf);
-						//test用に画面に表示?
-						swf.x = 90;
-						swf.visible = true;
-						Starling.current.nativeStage.addChild(swf);//TODO チェックaddChildする必要がある？
- 					}
 					assetManager_onComplete();
 				}
 				
