@@ -7,6 +7,8 @@ package harayoki.starling.feathers.themes.util
 	import flash.events.IOErrorEvent;
 	import flash.events.SecurityErrorEvent;
 	import flash.net.URLRequest;
+	import flash.system.ApplicationDomain;
+	import flash.system.LoaderContext;
 	import flash.text.Font;
 
 	public class FontSwfLoader
@@ -33,8 +35,13 @@ package harayoki.starling.feathers.themes.util
 			_loader = new Loader();
 			_loader.contentLoaderInfo.addEventListener(Event.COMPLETE,_handleComplete);
 			_loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,_handleError);
-			_loader.contentLoaderInfo.addEventListener(SecurityErrorEvent.SECURITY_ERROR,_handleError);
-			_loader.load(req);
+			_loader.contentLoaderInfo.addEventListener(SecurityErrorEvent.SECURITY_ERROR,_handleError);			
+			
+			//iOSでcontextを用意しないと Error: Error #3747: Multiple application domains are not supported on this operating system. となる
+			//@see http://blogs.adobe.com/airodynamics/2012/11/09/packaging-and-loading-multiple-swfs-in-air-apps-on-ios/
+			var context:LoaderContext = new LoaderContext(false, ApplicationDomain.currentDomain, null);
+			
+			_loader.load(req,context);
 		}
 		
 		private function _handleComplete(ev:Event):void
