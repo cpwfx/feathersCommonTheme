@@ -43,7 +43,7 @@ package
 			stage.addEventListener(Event.RESIZE,_handleStageResize);
 			
 			_starling.start();
-			_themeManager = new CommonThemeWithAssetManager("metalworks","assets/sampleTheme/",Objects.assetManager,stage,false);
+			_themeManager = new CommonThemeWithAssetManager("myTheme","assets/sampleTheme/",Objects.assetManager,stage,false);
 			_themeManager.addEventListener(Event.COMPLETE,_handleThemeManagerReady);
 			
 		}
