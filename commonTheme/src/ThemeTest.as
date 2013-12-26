@@ -1,6 +1,9 @@
 package
 {
 	import flash.geom.Rectangle;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
+	import flash.text.TextFormat;
 	
 	import feathers.controls.Button;
 	
@@ -53,8 +56,18 @@ package
 			var btn:Button = new Button();
 			btn.x = 48;
 			btn.y = 64;
-			btn.label = "しねきゃぷしょん. こんにちはWORLD。";
+			btn.label = "ここはFeathersのLabelです。動的埋め込みNG。。。";
 			addChild(btn);
+			
+			
+			var tf:TextField = new TextField();
+			tf.defaultTextFormat= new TextFormat("cinecaption",30,0xff99ff);
+			tf.text = "ここはFlashのTextFieldです。動的埋め込みOK。";
+			tf.embedFonts = true;
+			tf.y = 300;
+			tf.autoSize = TextFieldAutoSize.LEFT;
+			Starling.current.nativeStage.addChild(tf);
+
 			
 		}
 	}
