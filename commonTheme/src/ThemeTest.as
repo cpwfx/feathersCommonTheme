@@ -6,6 +6,7 @@ package
 	import flash.text.TextFormat;
 	
 	import feathers.controls.Button;
+	import feathers.controls.Label;
 	
 	import harayoki.starling.feathers.themes.CommonThemeWithAssetManager;
 	
@@ -56,14 +57,20 @@ package
 			var btn:Button = new Button();
 			btn.x = 48;
 			btn.y = 64;
-			btn.label = "ここはFeathersのLabelです。動的埋め込みNG。。。";
+			btn.label = "Button Test";
 			addChild(btn);
 			
+			var label:Label = new Label();
+			label.x = 48;
+			label.y = 256;
+			label.text = "ここはFeathersのLabelです。動的埋め込みNG。。。";
+			addChild(label);
 			
 			var tf:TextField = new TextField();
-			tf.defaultTextFormat= new TextFormat("cinecaption",30,0xff99ff);
+			tf.defaultTextFormat= new TextFormat("cinecaption",26,0xff99ff);
 			tf.text = "ここはFlashのTextFieldです。動的埋め込みOK。";
 			tf.embedFonts = true;
+			tf.x = 48;
 			tf.y = 300;
 			tf.autoSize = TextFieldAutoSize.LEFT;
 			Starling.current.nativeStage.addChild(tf);
