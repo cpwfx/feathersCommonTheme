@@ -10,9 +10,12 @@ bin-release-temp/
 
 ~*
 *~
+*.p12
+*.mobileprovision
 
 # lib project
 feathers1.2.0/
+
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
