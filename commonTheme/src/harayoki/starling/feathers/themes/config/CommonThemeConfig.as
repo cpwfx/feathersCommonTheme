@@ -1,16 +1,17 @@
 package harayoki.starling.feathers.themes.config
 {
 	import flash.geom.Rectangle;
+	
 	import harayoki.starling.feathers.themes.datatype.ColorSettingForTheme;
-	import harayoki.starling.feathers.themes.datatype.SizeSettingForTheme;
 	import harayoki.starling.feathers.themes.datatype.PaddingSettingForTheme;
+	import harayoki.starling.feathers.themes.datatype.SizeSettingForTheme;
 
 	public class CommonThemeConfig extends ThemeConfig
 	{
 		
 		//それぞれのpublic var の名前は jsonのパラメータと同じです
 		
-		public var fontName:String = "_sans";
+		public var fontNames:Array = [];
 		public var backgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x4a4137);
 		
 		public var lightTextColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0xe5e5e5);

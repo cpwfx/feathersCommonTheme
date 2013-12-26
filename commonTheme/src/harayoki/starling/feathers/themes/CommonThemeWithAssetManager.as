@@ -2,6 +2,7 @@ package harayoki.starling.feathers.themes
 {
 	import flash.display.MovieClip;
 	import flash.errors.IllegalOperationError;
+	import flash.text.Font;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	import flash.text.engine.CFFHinting;
@@ -63,6 +64,10 @@ package harayoki.starling.feathers.themes
 	import feathers.textures.Scale3Textures;
 	import feathers.textures.Scale9Textures;
 	
+	import harayoki.starling.feathers.themes.config.CommonThemeConfig;
+	import harayoki.starling.feathers.themes.util.FontSwfLoader;
+	import harayoki.starling.feathers.themes.util.FontUtil;
+	
 	import starling.core.Starling;
 	import starling.display.DisplayObject;
 	import starling.display.DisplayObjectContainer;
@@ -72,8 +77,6 @@ package harayoki.starling.feathers.themes
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 	import starling.utils.AssetManager;
-	import harayoki.starling.feathers.themes.util.FontSwfLoader;
-	import harayoki.starling.feathers.themes.config.CommonThemeConfig;
 
 	[Event(name="complete",type="starling.events.Event")]
 
@@ -315,9 +318,9 @@ package harayoki.starling.feathers.themes
 					if(progress<1) return;
 					
 					self.initializeConfig();
-					trace("fontfile",self._config.fontFile);
 					if(self._config.fontFile)
 					{
+						trace("load fontfile",self._config.fontFile);
 						var loader:FontSwfLoader = new FontSwfLoader();
 						if(assets is String)
 						{
@@ -338,8 +341,9 @@ package harayoki.starling.feathers.themes
 				{
 					if(swf)
 					{
-						swf.x = 100;//test用
-						swf.visible = true;//test用
+						//test用に画面に表示
+						swf.x = 90;
+						swf.visible = true;
 						Starling.current.nativeStage.addChild(swf);//TODO チェックaddChildする必要がある？
 					}
 					assetManager_onComplete();
@@ -421,15 +425,58 @@ package harayoki.starling.feathers.themes
 			}
 			this.scale = scaledDPI / this._originalDPI;
 		}
-
+		
 		protected function initializeFonts():void
 		{
+			
+			trace("EmbedFonts:",FontUtil.getAllEmbedFontNames());
+			trace("DeviceFonts:",FontUtil.getAllDeviceFontNames());
+			
+			var i:int, len:int;
+			var fontName:String;
+			var fontLookup:String;
+			var foundFont:Boolean = false;
+			len = this._config.fontNames.length;
+			for (i=0;i<len;i++)
+			{
+				fontName = this._config.fontNames[i];
+				var a:FontUtil;
+				if(FontUtil.isEmbedFont(fontName))
+				{
+					trace("found embed font :"+fontName);
+					foundFont = true;
+					fontLookup = FontLookup.EMBEDDED_CFF;
+					break;
+				}
+				if(FontUtil.isDeveiceFont(fontName))
+				{
+					trace("found device font :"+fontName);					
+					foundFont = true;
+					fontLookup = FontLookup.DEVICE;
+					break;
+				}
+				if(FontUtil.isDefaultFontFamily(fontName))
+				{
+					trace("found font family :"+fontName);					
+					foundFont = true;
+					fontLookup = FontLookup.DEVICE;
+					break;
+				}
+				trace(fontName,"not found");
+			}
+			if(!foundFont)
+			{
+				fontName = "_sans";
+				fontLookup = FontLookup.DEVICE;
+				trace("fonts not found, use "+fontName);					
+			}
+			
 			//these are for components that don't use FTE
-			this.scrollTextTextFormat = new TextFormat(this._config.fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor);
-			this.lightUICenteredTextFormat = new TextFormat(this._config.fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor, true, null, null, null, null, TextFormatAlign.CENTER);
+			this.scrollTextTextFormat = new TextFormat(fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor);
+			this.lightUICenteredTextFormat = new TextFormat(fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor, true, null, null, null, null, TextFormatAlign.CENTER);
 
-			this.regularFontDescription = new FontDescription(this._config.fontName, FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
-			this.boldFontDescription = new FontDescription(this._config.fontName, FontWeight.BOLD, FontPosture.NORMAL, FontLookup.EMBEDDED_CFF, RenderingMode.CFF, CFFHinting.NONE);
+			this.regularFontDescription = new FontDescription(fontName, FontWeight.NORMAL, FontPosture.NORMAL, fontLookup, RenderingMode.CFF, CFFHinting.NONE);
+			this.boldFontDescription = new FontDescription(fontName, FontWeight.BOLD, FontPosture.NORMAL, fontLookup, RenderingMode.NORMAL, CFFHinting.NONE);
 
 			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(this._config.fontSizeHeader * this.scale), this._config.lightTextColor.colorData);
 

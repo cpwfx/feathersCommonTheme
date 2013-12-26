@@ -1,17 +1,18 @@
-{
+﻿{
 	
 	"_":"必用なパラメータのみ設定すれば良い",
 	
 	"fontFile":"cinecaption.swf",
 	"fontClassList":["MyCinecaption"],
-    "fontName":"cinecaption",
+    "fontNames":["cinecaption"],
 	
-    "backgroundColor":"#4a4137",    
+    "backgroundColor":"#4a4137",
 	"fontSizeNormal":24,
 	"fontSizeSmall":18,
 	"fontSizeLarge":28,
 	"fontSizeHeader":36,
     "lightTextColor":"#e5e5e5",
+	"darkTextColor":"#1a1816",
     
     "btnPadding":[8,16,8,16]
     

@@ -51,9 +51,9 @@ package
 		private function _handleThemeManagerReady(ev:Event):void
 		{
 			var btn:Button = new Button();
-			btn.x = 64;
+			btn.x = 48;
 			btn.y = 64;
-			btn.label = "こんにちはWORLD";
+			btn.label = "しねきゃぷしょん. こんにちはWORLD。";
 			addChild(btn);
 			
 		}

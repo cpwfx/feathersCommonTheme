@@ -50,20 +50,14 @@ package harayoki.starling.feathers.themes.util
 			{
 				if(_loader.contentLoaderInfo.applicationDomain.hasDefinition(fontClassName))
 				{
-					var MyFont:Class = _loader.contentLoaderInfo.applicationDomain.getDefinition("MyCinecaption") as Class;
-					Font.registerFont(MyFont);					
+					var MyFont:Class = _loader.contentLoaderInfo.applicationDomain.getDefinition(fontClassName) as Class;
+					Font.registerFont(MyFont);		
+					trace("font class:",fontClassName,"found.",MyFont,(new MyFont() as Font).fontName);
 				}
 				else
 				{
 					trace("font class",fontClassName,"not found");
 				}
-			}
-			
-			
-			var fonts:Array = Font.enumerateFonts(false);
-			for each(var font:Font in fonts)
-			{
-				trace("font:",font.fontName,font.fontStyle,font.fontType);
 			}
 						
 			_callback && _callback.apply(null,[swf]);
