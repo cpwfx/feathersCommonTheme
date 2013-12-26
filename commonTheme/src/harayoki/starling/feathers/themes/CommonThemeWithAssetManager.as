@@ -470,6 +470,8 @@ package harayoki.starling.feathers.themes
 				trace("fonts not found, use "+fontName);					
 			}
 			
+			var locale:String = this._config.fontLocale ? this._config.fontLocale : "en";
+			
 			//these are for components that don't use FTE
 			this.scrollTextTextFormat = new TextFormat(fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor);
 			this.lightUICenteredTextFormat = new TextFormat(fontName, this._config.fontSizeNormal * this.scale, this._config.lightTextColor, true, null, null, null, null, TextFormatAlign.CENTER);
@@ -479,28 +481,46 @@ package harayoki.starling.feathers.themes
 			this.boldFontDescription = new FontDescription(fontName, FontWeight.NORMAL, FontPosture.NORMAL, fontLookup, RenderingMode.CFF, CFFHinting.NONE);
 			
 			this.headerElementFormat = new ElementFormat(this.boldFontDescription, Math.round(this._config.fontSizeHeader * this.scale), this._config.lightTextColor.colorData);
+			this.headerElementFormat.locale = locale;
 
 			this.darkUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor.colorData);
+			this.darkUIElementFormat.locale = locale;
 			this.lightUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor.colorData);
+			this.lightUIElementFormat.locale = locale;
 			this.selectedUIElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.selectedTextColor.colorData);
+			this.selectedUIElementFormat.locale = locale;
 			this.lightUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.disabledTextColor.colorData);
+			this.lightUIDisabledElementFormat.locale = locale;
 			this.darkUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkDisabledTextColor.colorData);
+			this.darkUIDisabledElementFormat.locale = locale;
 
 			this.largeUIDarkElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.darkTextColor.colorData);
+			this.largeUIDarkElementFormat.locale = locale;
 			this.largeUILightElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.lightTextColor.colorData);
+			this.largeUILightElementFormat.locale = locale;
 			this.largeUISelectedElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.selectedTextColor.colorData);
+			this.largeUISelectedElementFormat.locale = locale;
 			this.largeUIDisabledElementFormat = new ElementFormat(this.boldFontDescription, this._config.fontSizeLarge * this.scale, this._config.disabledTextColor.colorData);
+			this.largeUIDisabledElementFormat.locale = locale;
 
 			this.darkElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.darkTextColor.colorData);
+			this.darkElementFormat.locale = locale;
 			this.lightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.lightTextColor.colorData);
+			this.lightElementFormat.locale = locale;
 			this.disabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeNormal * this.scale, this._config.disabledTextColor.colorData);
+			this.disabledElementFormat.locale = locale;
 
 			this.smallLightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeSmall * this.scale, this._config.lightTextColor.colorData);
+			this.smallLightElementFormat.locale = locale;
 			this.smallDisabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeSmall * this.scale, this._config.disabledTextColor.colorData);
+			this.smallDisabledElementFormat.locale = locale;
 
 			this.largeDarkElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.darkTextColor.colorData);
+			this.largeDarkElementFormat.locale = locale;
 			this.largeLightElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.lightTextColor.colorData);
+			this.largeLightElementFormat.locale = locale;
 			this.largeDisabledElementFormat = new ElementFormat(this.regularFontDescription, this._config.fontSizeLarge * this.scale, this._config.disabledTextColor.colorData);
+			this.largeDisabledElementFormat.locale = locale;
 		}
 
 		protected function initializeTextures():void

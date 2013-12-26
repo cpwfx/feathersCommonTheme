@@ -12,6 +12,7 @@ package harayoki.starling.feathers.themes.config
 		//それぞれのpublic var の名前は jsonのパラメータと同じです
 		
 		public var fontNames:Array = [];
+		public var fontLocale:String = "en";
 		public var backgroundColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0x4a4137);
 		
 		public var lightTextColor:ColorSettingForTheme = ColorSettingForTheme.getColorSettingByUint(0xe5e5e5);
