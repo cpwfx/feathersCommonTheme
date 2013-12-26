@@ -37,7 +37,7 @@ package harayoki.starling.feathers.themes.config
 			return _themeId;
 		}
 		
-		protected var _verbose:Boolean = true;
+		protected var _verbose:Boolean = false;
 		
 		public function ThemeConfig()
 		{

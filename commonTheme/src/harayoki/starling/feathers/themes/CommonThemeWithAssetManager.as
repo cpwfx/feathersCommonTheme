@@ -361,7 +361,7 @@ package harayoki.starling.feathers.themes
 			{
 				if(this.assetManager)
 				{
-					trace("this._themeConfig.atlasname",this._config.atlasName);
+					//trace("this._themeConfig.atlasname",this._config.atlasName);
 					this.atlas = this.assetManager.getTextureAtlas(this._config.atlasName);
 				}
 				else

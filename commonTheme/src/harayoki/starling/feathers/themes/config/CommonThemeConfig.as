@@ -222,9 +222,9 @@ package harayoki.starling.feathers.themes.config
 			
 			_analyzeProperties(CommonThemeConfig);
 			
-			trace("------------");
-			trace(propertiesToJson());
-			trace("------------");
+			//trace("------------");
+			//trace(propertiesToJson());
+			//trace("------------");
 			
 		}
 		
