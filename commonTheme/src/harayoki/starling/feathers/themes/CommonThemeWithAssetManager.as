@@ -1469,6 +1469,7 @@ package harayoki.starling.feathers.themes
 
 		protected function pickerListInitializer(list:PickerList):void
 		{
+			var config:CommonThemeConfig = this._config;
 			if(DeviceCapabilities.isTablet(Starling.current.nativeStage))
 			{
 				list.popUpContentManager = new CalloutPopUpContentManager();
@@ -1476,10 +1477,10 @@ package harayoki.starling.feathers.themes
 			else
 			{
 				const centerStage:VerticalCenteredPopUpContentManager = new VerticalCenteredPopUpContentManager();
-				centerStage.marginTop = 24 * this.scale;
-				centerStage.marginRight = 24 * this.scale;
-				centerStage.marginBottom = 24 * this.scale;
-				centerStage.marginLeft = 24 * this.scale;
+				centerStage.marginTop = config.pickerListCenterStageMargin.top * this.scale;
+				centerStage.marginRight = config.pickerListCenterStageMargin.right * this.scale;
+				centerStage.marginBottom = config.pickerListCenterStageMargin.bottom * this.scale;
+				centerStage.marginLeft = config.pickerListCenterStageMargin.left * this.scale;
 				list.popUpContentManager = centerStage;
 			}
 
@@ -1487,18 +1488,18 @@ package harayoki.starling.feathers.themes
 			layout.verticalAlign = VerticalLayout.VERTICAL_ALIGN_BOTTOM;
 			layout.horizontalAlign = VerticalLayout.HORIZONTAL_ALIGN_JUSTIFY;
 			layout.useVirtualLayout = true;
-			layout.gap = 0;
-			layout.paddingTop = 0;
-			layout.paddingRight = 0;
-			layout.paddingBottom = 0;
-			layout.paddingLeft = 0;
+			layout.gap = config.pickerListLayoutGap * this.scale;
+			layout.paddingTop = config.pickerListLayoutPadding.top * this.scale;
+			layout.paddingRight = config.pickerListLayoutPadding.right * this.scale;
+			layout.paddingBottom = config.pickerListLayoutPadding.bottom * this.scale;
+			layout.paddingLeft = config.pickerListLayoutPadding.left * this.scale;
 			list.listProperties.layout = layout;
 			list.listProperties.verticalScrollPolicy = List.SCROLL_POLICY_ON;
 
 			if(DeviceCapabilities.isTablet(Starling.current.nativeStage))
 			{
-				list.listProperties.minWidth = 560 * this.scale;
-				list.listProperties.maxHeight = 528 * this.scale;
+				list.listProperties.minWidth = config.pickerListMinSizeForTablet.width * this.scale;
+				list.listProperties.maxHeight = config.pickerListMinSizeForTablet.height * this.scale;
 			}
 			else
 			{
@@ -1506,10 +1507,10 @@ package harayoki.starling.feathers.themes
 				backgroundSkin.width = 20 * this.scale;
 				backgroundSkin.height = 20 * this.scale;
 				list.listProperties.backgroundSkin = backgroundSkin;
-				list.listProperties.paddingTop = 8 * this.scale;
-				list.listProperties.paddingRight = 8 * this.scale;
-				list.listProperties.paddingBottom  = 8 * this.scale;
-				list.listProperties.paddingLeft = 8 * this.scale;
+				list.listProperties.paddingTop = config.pickerListPadding.top * this.scale;
+				list.listProperties.paddingRight = config.pickerListPadding.right * this.scale;
+				list.listProperties.paddingBottom  = config.pickerListPadding.bottom * this.scale;
+				list.listProperties.paddingLeft = config.pickerListPadding.left * this.scale;
 			}
 
 			list.listProperties.itemRendererName = COMPONENT_NAME_PICKER_LIST_ITEM_RENDERER;

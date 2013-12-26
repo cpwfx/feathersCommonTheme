@@ -190,6 +190,13 @@ package harayoki.starling.feathers.themes
 		public var headerWithoutBackgroundPadding:PaddingSettingForTheme = new PaddingSettingForTheme(14,18,14,18);
 		public var headerWithoutBackgroundMinSize:SizeSettingForTheme = new SizeSettingForTheme(88,88);
 		
+		//picker list
+		public var pickerListCenterStageMargin:PaddingSettingForTheme = new PaddingSettingForTheme(24,24,24,24);
+		public var pickerListLayoutGap:int = 0;
+		public var pickerListLayoutPadding:PaddingSettingForTheme = new PaddingSettingForTheme(0,0,0,0);
+		public var pickerListMinSizeForTablet:SizeSettingForTheme = new SizeSettingForTheme(560,528);
+		public var pickerListPadding:PaddingSettingForTheme = new PaddingSettingForTheme(8,8,8,8);
+		
 		//callout
 		public var calloutPadding:PaddingSettingForTheme = new PaddingSettingForTheme(12,14,12,14);
 		
