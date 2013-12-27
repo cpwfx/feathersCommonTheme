@@ -61,24 +61,24 @@ package
 		private function _handleThemeManagerReady(ev:Event):void
 		{
 			var btn:Button = new Button();
-			btn.x = 32;
+			btn.x = 24;
 			btn.y = 96;
-			btn.label = "ここはFeathersのButtonです。";
+			btn.label = "123 ここはFeathersのButtonです";
 			addChild(btn);
 			
 			var label:Label = new Label();
-			label.x = 32;
+			label.x = 24;
 			label.y = 184;
-			label.text = "ここはFeathersのLabelです。";
+			label.text = "123 ここはFeathersのLabelです";
 			addChild(label);
 			
 			var tf:TextField = new TextField();
 			tf.defaultTextFormat = new TextFormat(_themeManager.config.fontName,26,0xff99ff,true);
-			tf.text = "ここはFlashのTextFieldです。";
+			tf.text = "123 ここはFlashのTextFieldです";
 			tf.selectable = false;
 			tf.autoSize = TextFieldAutoSize.LEFT;
 			tf.embedFonts = true;
-			tf.x = 32;
+			tf.x = 24;
 			tf.y = 224;
 			Starling.current.nativeStage.addChild(tf);
 

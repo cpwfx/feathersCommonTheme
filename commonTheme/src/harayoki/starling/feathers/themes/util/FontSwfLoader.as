@@ -2,6 +2,7 @@ package harayoki.starling.feathers.themes.util
 {
 	import flash.display.DisplayObject;
 	import flash.display.Loader;
+	import flash.display.Sprite;
 	import flash.events.ErrorEvent;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -10,6 +11,7 @@ package harayoki.starling.feathers.themes.util
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.text.Font;
+	import flash.utils.describeType;
 
 	public class FontSwfLoader
 	{
@@ -46,24 +48,19 @@ package harayoki.starling.feathers.themes.util
 		
 		private function _handleComplete(ev:Event):void
 		{
-
-			//trace(typeof _loader.content);
-			var fontSwf:DisplayObject = _loader.content as DisplayObject;
-			var fonClasses:Vector.<Class>
+			var fontSwf:Sprite = _loader.content as Sprite;
+			
+			//registerFontはswf側で行っている
+			
+			var fontNames:Vector.<String>
 			try
 			{
-				fonClasses= fontSwf["getFontClasses"]() as Vector.<Class>;
+				trace("fontNames",fontSwf["getFontNames"]() as Vector.<String>);
 			}
 			catch(e:Error)
 			{
-				trace("couldn't get font classes");
-			}
-			
-			for each(var fontClass:Class in fonClasses)
-			{
-				Font.registerFont(fontClass);		
-				trace("font class found.",(new fontClass() as Font).fontName);
-			}
+				trace("couldn't get font classes from swf");
+			}			
 						
 			_callback && _callback.apply(null);
 			clean();

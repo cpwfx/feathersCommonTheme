@@ -1,6 +1,7 @@
 package
 {
 	import flash.display.Sprite;
+	import flash.text.Font;
 	
 	[SWF(width='128', height='128', backgroundColor='#eeeeee', frameRate='30')] 
 	public class SourceSansPro extends Sprite
@@ -17,15 +18,16 @@ package
 		
 		public function SourceSansPro()
 		{
+			Font.registerFont(SOURCE_SANS_PRO_REGULAR);		
+			Font.registerFont(SOURCE_SANS_PRO_SEMIBOLD);		
+			Font.registerFont(SOURCE_SANS_PRO_SEMIBOLD_NUMBERS);		
 		}
 		
-		public function getFontClasses():Vector.<Class>
+		//下記の実装はデバッグ用なので特に必要ない
+		public function getFontNames():Vector.<String>
 		{
-			var vec:Vector.<Class> = new Vector.<Class>();
-			vec.push(SOURCE_SANS_PRO_REGULAR);
-			vec.push(SOURCE_SANS_PRO_SEMIBOLD);
-			vec.push(SOURCE_SANS_PRO_SEMIBOLD_NUMBERS);
-			return vec;
+			return new <String>["SourceSansPro"];
 		}
+
 	}
 }

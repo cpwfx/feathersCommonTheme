@@ -33,6 +33,7 @@
   </compiler>
   <applications>
     <application path="cinecaption.as"/>
+    <application path="cinecaption_onlycff.as"/>
   </applications>
   <modules/>
   <workers/>
